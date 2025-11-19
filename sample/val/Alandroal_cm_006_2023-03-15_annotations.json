@@ -1,0 +1,515 @@
+{
+  "document_id": "Alandroal_cm_006_2023-03-15",
+  "metadata": {
+    "source_file": "Alandroal_cm_006_2023-03-15.json",
+    "municipality": "Alandroal",
+    "year": "2023"
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_pos": 2051,
+      "end_pos": 2306,
+      "topics": [
+        "Cooperação Externa e Relações Internacionais",
+        "Outros"
+      ],
+      "topic_ids": [
+        19,
+        21
+      ],
+      "personal_info": [],
+      "tema": "Antecipação da reunião devido à participação do Presidente na reunião da ANM",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a antecipação da presente reunião devido à sua participação na reunião da Associação Nacional de Municípios.",
+      "text": "Informou o Sr. Presidente que a reunião de hoje se realizou mais cedo, agradecendo a disponibilidade aos senhores vereadores, porque se vai deslocar a Coimbra para estar presente numa reunião sobre Energias Renováveis na Associação Nacional de Municípios."
+    },
+    {
+      "segment_id": 2,
+      "start_pos": 2306,
+      "end_pos": 2484,
+      "topics": [
+        "Cultura",
+        "Comunicação e Relações Públicas"
+      ],
+      "topic_ids": [
+        6,
+        20
+      ],
+      "personal_info": [],
+      "tema": "Presença do Executivo na BTL para apresentação do Festival do Peixe do Rio",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a sua presença e do Executivo na Bolsa de Turismo de Lisboa, para a apresentação do Festival do Peixe do Rio.",
+      "text": " \nNo dia 1 esteve com os senhores vereadores na BTL, em Lisboa, para a apresentação do Festival do Peixe do Rio à comunicação social, com uma sessão de demonstração de culinária."
+    },
+    {
+      "segment_id": 3,
+      "start_pos": 2484,
+      "end_pos": 2694,
+      "topics": [
+        "Outros"
+      ],
+      "topic_ids": [
+        21
+      ],
+      "personal_info": [],
+      "tema": "Presença do Presente na sessão de entrega de certificação da Estação Náutica do Alandroal",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a sua presença na sessão de entrega da certificação da Estação Náutica do Alandroal, na Bolsa de Turismo de Lisboa.",
+      "text": " \nNo dia 2 esteve novamente na BTL para a sessão de entrega da certificação da Estação Náutica do Alandroal, onde esteve também a Sra. Secretária de Estado das Pescas, que decorreu no stand do Turismo do Norte."
+    },
+    {
+      "segment_id": 4,
+      "start_pos": 2694,
+      "end_pos": 2990,
+      "topics": [
+        "Cultura",
+        "Atividades Económicas"
+      ],
+      "topic_ids": [
+        6,
+        18
+      ],
+      "personal_info": [],
+      "tema": "Realização da sessão de abertura do Festival do Peixe do Rio",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a realização da sessão de abertura do Festival do Peixe do Rio, com a presença do Secretário de Estado das Autarquias Locais e Desenvolvimento Regional.",
+      "text": " \nNo dia 4 realizou-se a sessão de abertura do Festival do Peixe do Rio, seguido do já habitual roteiro pelos restaurantes aderentes e visita à Feira de Atividades Económicas. Contou com a presença do Sr. Secretário de Estado das Autarquias Locais e Desenvolvimento Regional -- Dr. Carlos Miguel."
+    },
+    {
+      "segment_id": 5,
+      "start_pos": 2990,
+      "end_pos": 3699,
+      "topics": [
+        "Trânsito, Transportes e Comunicações",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        3,
+        19
+      ],
+      "personal_info": [],
+      "tema": "Presença do Presidente no Conselho Regional Extraordinário dedicado à apresentação do Plano Ferroviário Nacional",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a sua presença no Conselho Regional Extraordinário dedicado ao Plano Ferroviário Nacional, com a presença do Secretário de Estado das Infraestruturas, onde manifestou a intenção de instalar em Alandroal um terminal de carga e descarga, já alvo de estudo de viabilidade.",
+      "text": " \nNo dia 6 esteve na CCDR, no Conselho Regional Extraordinário dedicado à apresentação do Plano Ferroviário Nacional com a presença do Sr. Secretário de Estado das Infraestruturas, onde teve oportunidade de manifestar a intenção do Alandroal e de mais seis municípios vizinhos de termos um terminal de carga e descarga no Alandroal, tendo já trabalho desenvolvido com as Infraestruturas de Portugal, um estudo de viabilidade e esperando agora da parte do Governo a abertura para se encontrarem as soluções para essa concretização. Além da sua intervenção, estiveram presentes os senhores presidentes de Redondo, Vila Viçosa e Estremoz que fizeram intervenções complementares na defesa desta infraestrutura. --"
+    },
+    {
+      "segment_id": 6,
+      "start_pos": 3699,
+      "end_pos": 3901,
+      "topics": [
+        "Cultura",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        6,
+        19
+      ],
+      "personal_info": [],
+      "tema": "Presença do Presidente na apresentação da Agenda Digital do Alentejo",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a sua presença na apresentação da Agenda Digital do Alentejo, como presidente da Agência de Desenvolvimento Regional do Alentejo.",
+      "text": "\nNo mesmo dia, à tarde, esteve também na apresentação da Agenda Digital do Alentejo, importantíssima para o desenvolvimento regional do Alentejo nos próximos dez anos, na CCDR, como Presidente da ADRAL."
+    },
+    {
+      "segment_id": 7,
+      "start_pos": 3901,
+      "end_pos": 4508,
+      "topics": [
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        19
+      ],
+      "personal_info": [],
+      "tema": "Presença do Presidente numa reunião da CIMAC",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a sua presença na reunião da Comunidade Intermunicipal do Alentejo Central, com os técnicos do Gabinete de Planeamento e Desenvolvimento. Na reunião foram abordadas as prioridades dos municípios face ao Plano Operacional Regional.",
+      "text": " \nNo dia 7 teve uma reunião na CIMAC, com os técnicos do Gabinete de Planeamento e Desenvolvimento sobre a estratégia integrada de desenvolvimento territorial e na aproximação daquilo que são as prioridades que os municípios definiram nesta estratégia áquilo que já se sabe que vai ser o Plano Operacional Regional. Este programa tem, basicamente, três eixos e, neste momento, ainda não há grande segurança do que fica em cada eixo e como vão ser definias as prioridades, mas afiguram-se algumas dificuldades para os municípios conseguirem encaixar todos os projetos atendendo às limitações de cada eixo. --"
+    },
+    {
+      "segment_id": 8,
+      "start_pos": 4508,
+      "end_pos": 4769,
+      "topics": [
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        19
+      ],
+      "personal_info": [],
+      "tema": "Realização do Encontro das Estações Náuticas do Alentejo",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a realização do Encontro das Estações Náuticas do Alentejo.",
+      "text": "\nNo dia 9 realizou-se o Encontro das Estações Náuticas do Alentejo -- reunião em que se falou das etapas seguintes do processo e como se desenvolverão projetos para promover a rede no exterior já que até agora tinha sido a ADRAL a responsável por essa promoção."
+    },
+    {
+      "segment_id": 9,
+      "start_pos": 4769,
+      "end_pos": 4925,
+      "topics": [
+        "Desporto",
+        "Comunicação e Relações Públicas"
+      ],
+      "topic_ids": [
+        10,
+        20
+      ],
+      "personal_info": [],
+      "tema": "Apresentação da Volta ao Alentejo em bicicleta",
+      "resumo": "O Sr. Presidente da Câmara informou o Executivo Municipal sobre a apresentação da Volta ao Alentejo em bicicleta.",
+      "text": " \nNo dia 14, no Fórum Cultural, fez-se a apresentação da Volta ao Alentejo em bicicleta, prova que mobiliza todo o Alentejo e que começa no dia 22 de março."
+    },
+    {
+      "segment_id": 10,
+      "start_pos": 4925,
+      "end_pos": 5270,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Alterações orçamentais",
+      "resumo": "O Executivo Municipal ratificou, por maioria, com uma abstenção, as alterações orçamentais.",
+      "text": " \n2. RATIFICAÇÕES ORÇAMENTAIS\nPelo Senhor Presidente foram presentes a esta reunião as informações da contabilidade que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, ratificar as alterações orçamentais."
+    },
+    {
+      "segment_id": 11,
+      "start_pos": 5270,
+      "end_pos": 5357,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Ausência de alteração orçamental",
+      "resumo": "Não houve alteração orçamental para ratificação.",
+      "text": " \n3. ALTERAÇÃO ORÇAMENTAL\nNão houve alteração orçamental para ratificação a apresentar."
+    },
+    {
+      "segment_id": 12,
+      "start_pos": 5357,
+      "end_pos": 5572,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Aprovação da ata n.º 5, de 01.03.2023",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a ata n.º 05, de 2023-03-01.",
+      "text": " \n4. APROVAÇÃO DE ATA\nPelo Senhor Presidente foi presente a reunião a ata n.º 05, de 01.03.2023. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade, aprovar a ata n.º 05, de 01.03.2023."
+    },
+    {
+      "segment_id": 13,
+      "start_pos": 5572,
+      "end_pos": 5832,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 166,
+          "relative_start": 103,
+          "relative_end": 107
+        }
+      ],
+      "tema": "Pagamento de água em seis prestações mensais",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pagamento de água em seis prestações mensais.",
+      "text": " \n5. PROCESSOS E REQUERIMENTOS DIVERSOS\nPelo Senhor Presidente foi presente a reunião a informação n.º **** do Backoffice. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade, aprovar o pagamento de água em seis prestações mensais."
+    },
+    {
+      "segment_id": 14,
+      "start_pos": 5832,
+      "end_pos": 6182,
+      "topics": [
+        "Trânsito, Transportes e Comunicações"
+      ],
+      "topic_ids": [
+        3
+      ],
+      "personal_info": [
+        {
+          "id": 170,
+          "relative_start": 65,
+          "relative_end": 69
+        }
+      ],
+      "tema": "Colocação de sinalética vertical de limite de velocidade junto ao Monte dos Pombeiros",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a colocação de sinalética vertical de limite de velocidade junto ao Monte dos Pombeiros, entre o Seixo e a Aldeia da Venda.",
+      "text": " \nPelo Senhor Presidente foi presente a reunião a informação n.º **** do Serviço de Rede Viária e Trânsito que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade, aprovar a colocação de sinalética vertical de limite de velocidade, junto ao Monte dos Pombeiros, entre o Seixo e a Aldeia da Venda."
+    },
+    {
+      "segment_id": 15,
+      "start_pos": 6182,
+      "end_pos": 6942,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos",
+        "Atividades Económicas",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        0,
+        18,
+        19
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do Protocolo entre o Município e a DECO",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o protocolo entre o Município e a DECO. O Sr. Vereador Paulo Gonçalves informou que o protocolo é uma renovação com ajuste para o valor de 167,07€.",
+      "text": " \n6. PROTOCOLO ENTRE O MUNICÍPIO DE ALANDROAL E A DECO -- ASSOCIAÇÃO PORTUGUESA PARA A DEFESA DO CONSUMIDOR\nPelo Senhor Presidente foi presente a reunião o Protocolo entre o Município de Alandroal e a DECO -- Associação Portuguesa para a Defesa do Consumidor que se anexa à presente ata. \nSegundo o Sr. Vereador Paulo Gonçalves este protocolo é uma renovação sendo que houve um ajuste no valor do mesmo que passa de 150,00€ para 167,069€ e que se considera de grande importância no apoio aos consumidores, principalmente nos tempos de dificuldades que atravessamos. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o Protocolo entre o Município de Alandroal e a DECO -- Associação Portuguesa para a Defesa do Consumidor."
+    },
+    {
+      "segment_id": 16,
+      "start_pos": 6942,
+      "end_pos": 7235,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 179,
+          "relative_start": 106,
+          "relative_end": 110
+        }
+      ],
+      "tema": "Atribuição de um subsídio de nascimento",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de um subsídio de nascimento, no valor de 1000,00€.",
+      "text": " \n7. ATRIBUIÇÃO DE SUBSÍDIOS DE NASCIMENTO\nPelo Senhor Presidente foi presente a reunião a informação n.º **** da Secção de Serviço Social. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de um subsídio de nascimento no valor de 1.000,00€."
+    },
+    {
+      "segment_id": 17,
+      "start_pos": 7235,
+      "end_pos": 8800,
+      "topics": [
+        "Trânsito, Transportes e Comunicações",
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        3,
+        15
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do projeto de execução \"Melhoria da Mobilidade Urbana e Segurança Rodoviária\"",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a 4.ª fase do projeto de execução \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal\", no valor de 246812,15€ + IVA. O Sr. Presidente da Câmara esclareceu que as alterações ao projeto inicial criaram dificuldades nas negociações com a I.P., o que levou ao aditamento e ao lançamento de um novo procedimento concursal para concluir a empreitada.",
+      "text": " \n8. RATIFICAÇÃO DA DECISÃO DE APROVAÇÃO DO PROJETO DE EXECUÇÃO \"MELHORIA DA MOBILIDADE URBANA E SEGURANÇA RODOVIÁRIA DO CONCELHO DE ALANDROAL -- 4ª FASE -- ADITAMENTO (PARTE II)\"\nPelo Senhor Presidente foi presente a reunião a informação n.º 12 da Divisão de Obras, Ambiente e Serviços Urbanos -- Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nQuis o Sr. Presidente explicar que a obra da 4ª fase tem estado parada porque tem havido negociações com a I.P. no sentido de esta aceitar as propostas do projeto e não tem sido fácil. A I.P., por exemplo, não queria que se criassem novas passadeiras na Estrada Nacional, mas entende-se que é fundamental que haja passadeiras pois há uma parte da vila que está para lá da Nacional e as pessoas precisam de atravessar em segurança. Tem havido um processo contínuo de ajuste do projeto mas, neste momento, ultrapassaram-se essas dificuldades, há acordo e condições para relançar a obra. Estas alterações introduzidas fazem com que haja alterações ao projeto inicial, ou seja, não se vai executar tudo o que estava previsto e vão ter que se introduzir outras coisas. Daí este aditamento para se lançar um novo procedimento para a conclusão da obra. Trata-se então da aprovação do projeto de execução com um valor de 246.812,15€ acrescido de IVA. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade ratificar a decisão de aprovação do projeto de execução \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase -- Aditamento (Parte II)\"."
+    },
+    {
+      "segment_id": 18,
+      "start_pos": 8800,
+      "end_pos": 9933,
+      "topics": [
+        "Trânsito, Transportes e Comunicações",
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        3,
+        15
+      ],
+      "personal_info": [],
+      "tema": "Concurso público para realização da empreitada \"Melhoria da Mobilidade Urbana e Segurança Rodoviária\"",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o concurso público n.º EMP/CP/001-2023 para a realização da 4.ª fase da empreitada \"Melhoria da Mobilidade Urbana e Segurança Rodoviária\", no valor de 246812,15€ + IVA. O Sr. Presidente da Câmara informou que o prazo de execução da obra é de 90 dias.",
+      "text": " \n9. CONCURSO PÚBLICO N.º EMP/CP/001-2023, PARA REALIZAÇÃO DA EMPREITADA \"MELHORIA DA MOBILIDADE URBANA E SEGURANÇA RODOVIÁRIA DO CONCELHO DE ALANDROAL -- 4ª FASE -- ADITAMENTO (PARTE II)\" -- ABERTURA DE PROCEDIMENTO, PREÇO BASE, JÚRI, CRITÉRIO DE ADJUDICAÇÃO, CONTRATO, PEÇAS DO PROCEDIMENTO E ÓRGÃO COMPETENTE\nPelo Senhor Presidente foi presente a reunião a informação de 13 de março da Divisão de Obras, Ambiente e Serviços Urbanos -- Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nReferiu o Sr. Presidente que, tal como explicado no ponto anterior, trata-se do concurso propriamente dito em que a entidade responsável é a Câmara Municipal, o prazo é de 90 dias e o valor é de 246.812,15€, acrescido de IVA. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o concurso público n.º EMP/CP/001-2023, para realização da empreitada \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase -- Aditamento (Parte II)\" -- Abertura de procedimento, preço base, júri, critério de adjudicação, contrato, peças do procedimento e órgão competente."
+    },
+    {
+      "segment_id": 19,
+      "start_pos": 9933,
+      "end_pos": 10699,
+      "topics": [
+        "Património",
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        5,
+        15
+      ],
+      "personal_info": [],
+      "tema": "Revisão de preços da empreitada na Fortaleza de Juromenha",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a 10.ª revisão de preços da empreitada da Fortaleza de Juromenha referentes à consolidação e restauro do perímetro abaluartado exterior e da cerca islâmica e medieval interior, no valor de 12627,74€ + IVA.",
+      "text": " \n10. EMPREITADA \"FORTALEZA DE JUROMENHA -- CONSOLIDAÇÃO E RESTAURO DOS PARAMENTOS DO PERÍMETRO ABALUARTADO EXTERIOR E CERCA ISLÂMICA E MEDIEVAL INTERIOR\" -- 10.ª REVISÃO DE PREÇOS DA EMPREITADA\nPelo Senhor Presidente foi presente a reunião a informação n.º 13 da Divisão de Obras, Ambiente e Serviços Urbanos, Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nO Sr. Presidente referiu tratar-se de uma revisão de preços que corresponde a um valor de 12.627,74€ acrescido de IVA. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a 10ª revisão de preços da empreitada \"Fortaleza de Juromenha -- Consolidação e restauro dos paramentos do perímetro abaluartado exterior e cerca islâmica e medieval interior\"."
+    },
+    {
+      "segment_id": 20,
+      "start_pos": 10699,
+      "end_pos": 12084,
+      "topics": [
+        "Trânsito, Transportes e Comunicações",
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        3,
+        15
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do mapa de trabalhos da empreitada de Melhoria da Mobilidade Urbana e Segurança Rodoviária",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a supressão do mapa de trabalhos da empreitada “Melhoria da Mobilidade Urbana e Segurança Rodoviária”, no valor de 63184,60€. O Sr. Presidente da Câmara esclareceu que o parecer solicitado à I.P. levou mais de um ano para ser respondido, o que justifica a pausa prolongada da empreitada.",
+      "text": " \n11. EMPREITADA DE \"MELHORIA DA MOBILIDADE URBANA E SEGURANÇA RODOVIÁRIA DO CONCELHO DE ALANDROAL -- 4ª FASE\" -- APROVAÇÃO DE MAPA DE TRABALHOS A MENOS\nPelo Senhor Presidente foi presente a esta reunião a informação n.º 14 da Divisão de Obras, Ambiente e Serviços Urbanos, Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nO Sr. Presidente referiu que se trata da supressão de trabalhos que estavam previstos no valor de 63.184,60€ acrescidos de IVA. O Sr. Presidente clarificou que foi pedido um parecer sobre o projeto antes de lançar o procedimento e a I.P. demorou mais de um ano a responder. Trata-se de um projeto financiado e sem este parecer não poderia avançar. Quando respondeu, a Câmara já tinha todos os trâmites em andamento. Apesar do esforço das entidades regionais da I.P. para desbloquear todo o processo, há um conjunto de decisões que são tomadas a outros níveis, o que implica uma grande movimentação de documentos e de projetos e que muitas vezes vêm com atrasos e que acabam por justificar esta paragem mais prolongada. Se houvesse uma decisão regional provavelmente esta obra já estaria em andamento há mais tempo. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o mapa de trabalhos a menos da empreitada de \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase\"."
+    },
+    {
+      "segment_id": 21,
+      "start_pos": 12084,
+      "end_pos": 12907,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 200,
+          "relative_start": 356,
+          "relative_end": 370
+        },
+        {
+          "id": 201,
+          "relative_start": 617,
+          "relative_end": 657
+        }
+      ],
+      "tema": "Designação do Encarregado de Proteção de Dados do Município",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a designação do encarregado de proteção de dados do Município. O Sr. Presidente clarificou que o encarregado foi nomeado pela Comunidade Intermunicipal do Alentejo Central (CIMAC).",
+      "text": " \n12. DESIGNAÇÃO DO ENCARREGADO DE PROTEÇÃO DE DADOS\nPelo Senhor Presidente foi presente a esta reunião a proposta n.º 5 do Presidente que se anexa à presente ata. \nO Sr. Presidente esclareceu que perante a Lei relativa ao RGPD todos os municípios têm a obrigação de designar um encarregado da proteção de dados. A Câmara do Alandroal tinha nomeado a Dra. **************, coordenadora do gabinete jurídico, por despacho. Pelas dificuldades apresentadas pelos diferentes municípios, a solução encontrada foi que a CIMAC designasse um encarregado da proteção e dados para todos os municípios, que neste caso será o Dr. ****************************************. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a Designação do Encarregado de Proteção de Dados do Município de Alandroal."
+    },
+    {
+      "segment_id": 22,
+      "start_pos": 12907,
+      "end_pos": 13295,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 205,
+          "relative_start": 28,
+          "relative_end": 32
+        },
+        {
+          "id": 207,
+          "relative_start": 111,
+          "relative_end": 117
+        },
+        {
+          "id": 209,
+          "relative_start": 373,
+          "relative_end": 377
+        }
+      ],
+      "tema": "Aprovação dos projetos das especialidades relativos a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, os projetos das especialidades relativos a um processo de obras particulares.",
+      "text": " \n13. PROCESSO DE OBRAS N.º **** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar os projetos das especialidades relativos ao Processo de obras n.º **** -- EDIFIC."
+    },
+    {
+      "segment_id": 23,
+      "start_pos": 13295,
+      "end_pos": 13682,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 212,
+          "relative_start": 28,
+          "relative_end": 32
+        },
+        {
+          "id": 214,
+          "relative_start": 111,
+          "relative_end": 116
+        },
+        {
+          "id": 216,
+          "relative_start": 372,
+          "relative_end": 376
+        }
+      ],
+      "tema": "Aprovação dos projetos das especialidades relativos a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, os projetos das especialidades relativos a um processo de obras particulares.",
+      "text": " \n14. PROCESSO DE OBRAS N.º **** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ***** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar os projetos das especialidades relativos ao Processo de obras n.º **** -- EDIFIC."
+    },
+    {
+      "segment_id": 24,
+      "start_pos": 13682,
+      "end_pos": 14066,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 219,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 221,
+          "relative_start": 112,
+          "relative_end": 118
+        },
+        {
+          "id": 223,
+          "relative_start": 368,
+          "relative_end": 373
+        }
+      ],
+      "tema": "Aprovação de projeto de arquitetura",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, do projeto de arquitetura relativo a um processo de obras particulares.",
+      "text": " \n15. PROCESSO DE OBRAS N.º ***** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o projeto de arquitetura referente ao processo de obras n.º ***** -- EDIFIC."
+    }
+  ],
+  "excluded_segments": [
+    {
+      "segment_number": 1,
+      "position": "first",
+      "start": 0,
+      "end": 2051,
+      "text": "ATA N.º 06\nREUNIÃO ORDINÁRIA 15/03/2023\nCÂMARA MUNICIPAL DE ALANDROAL\nPresidiu o Senhor João Maria Aranha Grilo, Presidente da Câmara Municipal de Alandroal.\nVereadores João Carlos Camões Roma Balsante\nFernanda Manuela Brites Romão\nPaulo Jorge da Silva Gonçalves\nElisabete de Jesus dos Passos Galhardas\nSecretariou a Reunião Marta Cristina Simões da Silva Patacão Rodrigues\nNo Edifício Sede do Município de Alandroal, o Senhor Presidente da Câmara Municipal, João Maria Aranha Grilo, declarou aberta a reunião, eram 09.30 horas. \nPERÍODO DE ANTES DA ORDEM DO DIA\nO Sr. Presidente propôs a introdução de cinco novos pontos e a retirada de outro, que foi aprovada por unanimidade, ficando a mesma composta da seguinte forma: \nORDEM DO DIA\n1.  Informações.\n2.  Ratificações orçamentais.\n3.  Alteração orçamental.\n4.  Aprovação de ata.\n5.  Processos e requerimentos diversos.\n6.  Protocolo entre o Município de Alandroal e a DECO -- Associação Portuguesa para a Defesa do Consumidor.\n7.  Atribuição de subsídios de nascimento.\n8.  Ratificação da decisão de aprovação do projeto de execução \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase -- Aditamento (Parte II)\".\n9.  Concurso público n.º EMP/CP/001-2023, para realização da empreitada \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase -- Aditamento (Parte II)\" -- Abertura de procedimento, preço base, júri, critério de adjudicação, contrato, peças do procedimento e órgão competente.\n10. Empreitada \"Fortaleza de Juromenha -- Consolidação e restauro dos paramentos do perímetro abaluartado exterior e cerca islâmica e medieval interior\" -- 10.ª Revisão de preços da empreitada.\n11. Empreitada de \"Melhoria da Mobilidade Urbana e Segurança Rodoviária do Concelho de Alandroal -- 4ª Fase\" -- Aprovação de Mapa de Trabalhos a Menos.\n12. Designação do Encarregado de Proteção de Dados.\n13. Processo de obras n.º 2/22 -- EDIFIC.\n14. Processo de obras n.º 8/22 -- EDIFIC.\n15. Processo de obras n.º 20/22-EDIFIC.\n1.INFORMAÇÕES\n",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "first_segment_removal"
+    },
+    {
+      "segment_number": 40,
+      "position": "last",
+      "start": 14066,
+      "end": 14719,
+      "text": " \nAPROVAÇÃO EM MINUTA\nA presente acta ficou lavrada, lida e aprovada em minuta, por unanimidade, no final desta reunião, nos termos e para os efeitos previstos no artigo 57.º, do Regime Jurídico das Autarquias, aprovado pela Lei nº 75/2013, de 12 de Setembro.\nE nada mais havendo a apreciar, ponderar ou deliberar, o Senhor Presidente da Câmara Municipal deu por encerrada esta reunião. Eram 09.55 horas. \nE eu, Marta Cristina Simões da Silva Patacão Rodrigues, designada para o efeito, lavrei, li e vou subscrever a presente acta. \nO PRESIDENTE DA CÂMARA MUNICIPAL,\nJOÃO MARIA ARANHA GRILO\nA SECRETÁRIA,\nMARTA CRISTINA SIMÕES DA SILVA PATACÃO RODRIGUES",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "last_segment_removal"
+    }
+  ],
+  "statistics": {
+    "total_segments": 24,
+    "segments_with_topics": 24,
+    "segments_with_personal_info": 7,
+    "unique_topics": [
+      "Cultura",
+      "Atividades Económicas",
+      "Obras Particulares",
+      "Desporto",
+      "Património",
+      "Cooperação Externa e Relações Internacionais",
+      "Trânsito, Transportes e Comunicações",
+      "Administração Geral, Finanças e Recursos Humanos",
+      "Ação Social",
+      "Outros",
+      "Obras Públicas",
+      "Comunicação e Relações Públicas"
+    ],
+    "total_characters": 12093
+  }
+}

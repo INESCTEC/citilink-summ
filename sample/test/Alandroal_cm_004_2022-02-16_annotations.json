@@ -1,0 +1,739 @@
+{
+  "document_id": "Alandroal_cm_004_2022-02-16",
+  "metadata": {
+    "source_file": "Alandroal_cm_004_2022-02-16.json",
+    "municipality": "Alandroal",
+    "year": "2022"
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_pos": 2248,
+      "end_pos": 2636,
+      "topics": [
+        "Ambiente",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        1,
+        19
+      ],
+      "personal_info": [
+        {
+          "id": 201,
+          "relative_start": 75,
+          "relative_end": 84
+        },
+        {
+          "id": 202,
+          "relative_start": 88,
+          "relative_end": 100
+        }
+      ],
+      "tema": "Presença da Diretora da GESAMB para dar início à 2.ª fase do projeto \"Cascas Solidárias\"",
+      "resumo": "O Sr. Presidente da Câmara informou sobre a presença da Diretora da GESAMB para dar início à 2.ª fase do projeto \"Cascas Solidárias\", na qual se prevê a instalação de compostores comunitários.",
+      "text": "O Sr. Presidente informou que no dia 5 esteve no Alandroal a Sra. Diretora ********* -- ************ -- para dar início à 2ª fase do projeto \"Cascas Solidárias\", que consiste na instalação de compostores comunitários para separação de lixo orgânico por parte dos munícipes, de maneira a que eles saiam do circuito normal do lixo e para que possa ser transformado em material reutilizável."
+    },
+    {
+      "segment_id": 2,
+      "start_pos": 2636,
+      "end_pos": 2824,
+      "topics": [
+        "Educação e Formação Profissional",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        4,
+        19
+      ],
+      "personal_info": [
+        {
+          "id": 207,
+          "relative_start": 26,
+          "relative_end": 44
+        },
+        {
+          "id": 208,
+          "relative_start": 53,
+          "relative_end": 71
+        },
+        {
+          "id": 209,
+          "relative_start": 91,
+          "relative_end": 129
+        }
+      ],
+      "tema": "Preparação do processo de transferência de competências",
+      "resumo": "O Sr. Presidente da Câmara informou acerca da preparação do processo de transferência de competências.",
+      "text": " \nNo dia 7 recebeu a Sra. ****************** -- Dra. ****************** -- e o Sr. Diretor ************************************** para preparar o processo de transferência de competências."
+    },
+    {
+      "segment_id": 3,
+      "start_pos": 2824,
+      "end_pos": 3156,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 215,
+          "relative_start": 100,
+          "relative_end": 104
+        },
+        {
+          "id": 217,
+          "relative_start": 249,
+          "relative_end": 264
+        }
+      ],
+      "tema": "Pedido de aquisição de um ossário permanente em seis prestações mensais, por um cidadão",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pedido de aquisição de um ossário permanente em seis prestações mensais, por um cidadão.",
+      "text": " \n2. PROCESSOS E REQUERIMENTOS DIVERSOS\nPelo Sr. Presidente foi presente a reunião a informação n.º **** do Backoffice que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o pedido de *************** para aquisição de um ossário permanente em seis prestações mensais."
+    },
+    {
+      "segment_id": 4,
+      "start_pos": 3156,
+      "end_pos": 3454,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 220,
+          "relative_start": 62,
+          "relative_end": 66
+        },
+        {
+          "id": 222,
+          "relative_start": 211,
+          "relative_end": 227
+        }
+      ],
+      "tema": "Pedido de aquisição de uma sepultura perpétua em quatro prestações mensais, por um cidadão",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pedido de aquisição de uma sepultura perpétua em quatro prestações mensais, por um cidadão.",
+      "text": " \nPelo Sr. Presidente foi presente a reunião a informação n.º **** do Backoffice que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o pedido de **************** para aquisição de uma sepultura perpétua em quatro prestações mensais."
+    },
+    {
+      "segment_id": 5,
+      "start_pos": 3454,
+      "end_pos": 3720,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 225,
+          "relative_start": 62,
+          "relative_end": 66
+        },
+        {
+          "id": 227,
+          "relative_start": 248,
+          "relative_end": 265
+        }
+      ],
+      "tema": "Pedido de pagamento de água em seis prestações mensais, por um cidadão",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pedido de pagamento de água em seis prestações mensais, por um cidadão.",
+      "text": " \nPelo Sr. Presidente foi presente a reunião a informação n.º **** do Backoffice que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o pagamento de água em seis prestações mensais a *****************."
+    },
+    {
+      "segment_id": 6,
+      "start_pos": 3720,
+      "end_pos": 4201,
+      "topics": [
+        "Trânsito, Transportes e Comunicações"
+      ],
+      "topic_ids": [
+        3
+      ],
+      "personal_info": [],
+      "tema": "Colocação de sinalização vertical na área recreativa e de lazer das Azenhas D'El Rei",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a colocação de sinalização vertical na área recreativa e de lazer das Azenhas D'El Rei. O Sr. Vereador Paulo Gonçalves esclareceu tratar-se de uma proibição de estacionamento e paragem.",
+      "text": " \nPelo Sr. Presidente foi presente a reunião a informação n.º 1655 do Serviço de Rede Viária e Trânsito que se anexa à presente ata. \nO Sr. Vereador Paulo Gonçalves explicou que se trata de uma proibição de estacionamento e paragem, exceto para cargas e descargas, na zona de embarque da Praia Fluvial. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o a colocação de sinalização vertical na área recreativa e de lazer das Azenhas D'El Rei."
+    },
+    {
+      "segment_id": 7,
+      "start_pos": 4201,
+      "end_pos": 4932,
+      "topics": [
+        "Trânsito, Transportes e Comunicações"
+      ],
+      "topic_ids": [
+        3
+      ],
+      "personal_info": [],
+      "tema": "Criação de dois lugares de estacionamento junto ao Serviço de Finanças de Alandroal",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a criação de dois lugares de estacionamento junto ao Serviço de Finanças de Alandroal. O Sr. Vereador Paulo Gonçalves explicou que houve erros no local e designação dos lugares, esclarecendo que se pretende alterar a localização do estacionamento e colocar sinalização de estacionamento para mobilidade reduzida, e de um lugar para utentes.",
+      "text": " \nPelo Sr. Presidente foi presente a reunião a informação n.º 1552 do Serviço de Rede Viária e Trânsito que se anexa à presente ata. \nO Sr. Vereador Paulo Gonçalves esclareceu que já tinha sido aprovada em reunião de Câmara a criação destes dois lugares de estacionamento junto ao Serviço de Finanças do Alandroal mas, por lapso, ficaram no local errado e com a designação também errada. Propõe-se alterar a localização deste estacionamento e colocar sinalização que identifique um lugar de estacionamento para mobilidade reduzida e um lugar para utentes. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a criação de dois lugares de estacionamento junto ao Serviço de Finanças de Alandroal."
+    },
+    {
+      "segment_id": 8,
+      "start_pos": 4932,
+      "end_pos": 5144,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Aprovação da ata n.º 3, de 02.02.2022",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a ata n.º 3, de 2022-02-02.",
+      "text": " \n3. APROVAÇÃO DE ATA\nPelo Senhor Presidente foi presente a reunião a ata n.º 3, de 02.02.2022. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a ata n.º 3, de 02.02.2022."
+    },
+    {
+      "segment_id": 9,
+      "start_pos": 5144,
+      "end_pos": 5796,
+      "topics": [
+        "Educação e Formação Profissional",
+        "Ação Social"
+      ],
+      "topic_ids": [
+        4,
+        11
+      ],
+      "personal_info": [],
+      "tema": "Atribuição de apoio para a Creche da Cruz Vermelha por mais um mês",
+      "resumo": "O Executivo Municipal aprovou, por maioria, com dois votos a favor e um voto contra, a atribuição de apoio para a Creche da Cruz Vermelha por mais um mês. O Sr. Presidente da Câmara esclareceu que este pedido já tinha sido discutido, tendo havido um erro no período de cabimento, solicitado para seis meses, e não cinco.",
+      "text": " \n4. PEDIDO DE APOIO DA CRECHE DA CRUZ VERMELHA DE SANTIAGO MAIOR\nPelo Senhor Presidente foi presente a reunião o pedido da Cruz Vermelha de Santiago Maior que se anexa à presente ata. \nO Sr. Presidente explicou que este pedido já tinha vindo a deliberação de Câmara mas, por lapso, foi feito apenas o cabimento para cinco meses e não para seis, como solicitado. Assim, vem agora o cabimento para mais um mês. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e o voto contra da eleita pelo Nós, Cidadãos, aprovar a atribuição de apoio para a Creche da Cruz Vermelha por mais um mês."
+    },
+    {
+      "segment_id": 10,
+      "start_pos": 5796,
+      "end_pos": 6301,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [
+        {
+          "id": 245,
+          "relative_start": 277,
+          "relative_end": 290
+        },
+        {
+          "id": 246,
+          "relative_start": 301,
+          "relative_end": 333
+        },
+        {
+          "id": 248,
+          "relative_start": 470,
+          "relative_end": 504
+        }
+      ],
+      "tema": "Atribuição de um fundo de caixa fixo",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de um fundo de caixa fixo. O Sr. Presidente da Câmara esclareceu tratar-se da atribuição de um valor de 35,00€ mensais a um cidadão.",
+      "text": " \n5. ATRIBUIÇÃO DE FUNDO DE CAIXA FIXO\nPelo Senhor Presidente foi presente a esta reunião a informação da Secção de Ambiente e Qualidade de Vida que se anexa à presente ata. \nO Sr. Presidente referiu que se trata de atribuir um fundo de caixa fixo no valor de 35,00€ mensais a ************* por ser o ********************************. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de um fundo de caixa fixo para o **********************************."
+    },
+    {
+      "segment_id": 11,
+      "start_pos": 6301,
+      "end_pos": 7281,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos",
+        "Ação Social",
+        "Comunicação e Relações Públicas"
+      ],
+      "topic_ids": [
+        0,
+        11,
+        20
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do Protocolo de cooperação entre o Município e a Rádio Campanário",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o protocolo de cooperação entre o Município e a Rádio Campanário. O Sr. Presidente esclareceu que se pretende desenvolver uma programação diária, com conteúdos especificamente dedicados ao concelho, com o objetivo de aproximar a Rádio e os ouvintes, como forma de combate ao isolamento de idosos. Além da instalação de um estúdio no concelho, prevê-se que o Município transfira mensalmente um valor de 500,00€.",
+      "text": " \n6. PROTOCOLO DE COOPERAÇÃO ENTRE O MUNICÍPIO DE ALANDROAL E A RÁDIO CAMPANÁRIO\nPelo Senhor Presidente foi presente a esta reunião o Protocolo de cooperação entre o Município de Alandroal e a Rádio Campanário que se anexa à presente ata. \nO Sr. Presidente explicou tratar-se do desenvolvimento de um projeto piloto de combate ao isolamento dos idosos, utilizando a rádio como veículo de aproximação, ou seja, através de uma programação diária que permite a interação com os ouvintes, quebrando o isolamento em que vivem ao terem a garantia que todos os dias podem falar com alguém. Ao mesmo tempo, a rádio instalará um estúdio no concelho e passará a ter conteúdos próprios dedicados ao concelho. Este protocolo pressupõe que o Município tenha que transferir 500,00€ mensais para assegurar todos estes serviços. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o Protocolo de cooperação entre o Município de Alandroal e a Rádio Campanário."
+    },
+    {
+      "segment_id": 12,
+      "start_pos": 7281,
+      "end_pos": 8008,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do Protocolo de cooperação entre o Município e o Instituto Nacional para a Reabilitação",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o protocolo de cooperação entre o Município e o Instituto Nacional para a Reabilitação. A Sra. Vereadora Fernanda Romão indicou que se pretende criar um balcão de inclusão para utentes e familiares de utentes com mobilidade reduzida.",
+      "text": " \n7. PROTOCOLO DE COOPERAÇÃO ENTRE O MUNICÍPIO DE ALANDROAL E O INSTITUTO NACIONAL PARA A REABILITAÇÃO, I.P.\nPelo Senhor Presidente foi presente a esta reunião o Protocolo de cooperação entre o Município de Alandroal e o Instituto Nacional para a Reabilitação, I.P. que se anexa à presente ata. \nA Sra. Vereadora Fernanda Romão esclareceu que o principal objetivo é criar um balcão de inclusão, destinado a utentes e familiares de utentes com mobilidade reduzida e pensa ser uma mais valia para os serviços haver mais esta valência. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o Protocolo de cooperação entre o Município de Alandroal e o Instituto Nacional para a Reabilitação, I.P."
+    },
+    {
+      "segment_id": 13,
+      "start_pos": 8008,
+      "end_pos": 8711,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos",
+        "Educação e Formação Profissional",
+        "Ciência"
+      ],
+      "topic_ids": [
+        0,
+        4,
+        7
+      ],
+      "personal_info": [],
+      "tema": "Aprovação do memorando de entendimento entre o Município e a Universidade de Évora",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o memorando de entendimento entre o Município e a Universidade de Évora. O Sr. Vice-Presidente da Câmara esclareceu que se pretende criar um espaço de aproximação da Universidade à comunidade, ligado à Biblioteca, e uma rede de conhecimento com vários locais aderentes.",
+      "text": " \n8. MEMORANDO DE ENTENDIMENTO ENTRE O MUNICÍPIO DE ALANDROAL E A UNIVERSIDADE DE ÉVORA\nPelo Senhor Presidente foi presente a esta reunião o Memorando de entendimento entre o Município de Alandroal e a Universidade de Évora que se anexa à presente ata. \nO Sr. Vice-Presidente referiu que este protocolo visa a criação de um espaço onde se possa aprofundar a ligação e articulação do conhecimento gerado na Universidade com a comunidade, criando uma rede de conhecimento com outros locais aderentes e ficando ligado à Biblioteca. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o Memorando de entendimento entre o Município de Alandroal e a Universidade de Évora."
+    },
+    {
+      "segment_id": 14,
+      "start_pos": 8711,
+      "end_pos": 9074,
+      "topics": [
+        "Educação e Formação Profissional",
+        "Ação Social"
+      ],
+      "topic_ids": [
+        4,
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 264,
+          "relative_start": 119,
+          "relative_end": 123
+        },
+        {
+          "id": 265,
+          "relative_start": 126,
+          "relative_end": 130
+        },
+        {
+          "id": 267,
+          "relative_start": 325,
+          "relative_end": 339
+        },
+        {
+          "id": 268,
+          "relative_start": 342,
+          "relative_end": 362
+        }
+      ],
+      "tema": "Comparticipações na mensalidade da creche a dois cidadãos",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as comparticipações na mensalidade da creche a dois cidadãos.",
+      "text": " \n9. COMPARTICIPAÇÃO NA MENSALIDADE DA CRECHE\nPelo Senhor Presidente foram presentes a esta reunião as informações n.º **** e **** da Secção de Serviço Social que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as comparticipações na mensalidade da creche a ************** e ********************."
+    },
+    {
+      "segment_id": 15,
+      "start_pos": 9074,
+      "end_pos": 9407,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 273,
+          "relative_start": 315,
+          "relative_end": 332
+        }
+      ],
+      "tema": "Atribuição de vales de compras alimentares a um cidadão",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de vales de compras alimentares a um cidadão.",
+      "text": " \n10. ATRIBUIÇÃO DE VALES DE COMPRAS ALIMENTARES\nPelo Senhor Presidente foi presente a esta reunião a informação n.º 1508 da Secção de Serviço Social que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de vales de compras alimentares a *****************."
+    },
+    {
+      "segment_id": 16,
+      "start_pos": 9407,
+      "end_pos": 9914,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 277,
+          "relative_start": 144,
+          "relative_end": 148
+        },
+        {
+          "id": 278,
+          "relative_start": 150,
+          "relative_end": 154
+        },
+        {
+          "id": 279,
+          "relative_start": 156,
+          "relative_end": 160
+        },
+        {
+          "id": 280,
+          "relative_start": 162,
+          "relative_end": 166
+        },
+        {
+          "id": 281,
+          "relative_start": 169,
+          "relative_end": 173
+        },
+        {
+          "id": 283,
+          "relative_start": 390,
+          "relative_end": 406
+        },
+        {
+          "id": 284,
+          "relative_start": 408,
+          "relative_end": 423
+        },
+        {
+          "id": 285,
+          "relative_start": 425,
+          "relative_end": 440
+        },
+        {
+          "id": 286,
+          "relative_start": 442,
+          "relative_end": 455
+        },
+        {
+          "id": 287,
+          "relative_start": 458,
+          "relative_end": 474
+        }
+      ],
+      "tema": "Atribuição de apoio à fixação de residência em habitação própria a cinco cidadãos",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de apoio à fixação de residência em habitação própria a cinco cidadãos.",
+      "text": " \n11. ATRIBUIÇÃO DE APOIO À FIXAÇÃO DE RESIDÊNCIA EM HABITAÇÃO PRÓPRIA\nPelo Senhor Presidente foram presentes a esta reunião as informações n.º ****, ****, ****, **** e **** da Secção de Serviço Social que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de apoio à fixação de residência em habitação própria a ****************, ***************, ***************, ************* e **************** que se anexam à presente ata. --"
+    },
+    {
+      "segment_id": 17,
+      "start_pos": 9914,
+      "end_pos": 10306,
+      "topics": [
+        "Educação e Formação Profissional",
+        "Ação Social"
+      ],
+      "topic_ids": [
+        4,
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 291,
+          "relative_start": 141,
+          "relative_end": 145
+        },
+        {
+          "id": 293,
+          "relative_start": 374,
+          "relative_end": 391
+        }
+      ],
+      "tema": "Pedido de acumulação de bolsa de estudo para 2021/2022 a um cidadão",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pedido de acumulação de bolsa de estudo para 2021/2022 a um cidadão.",
+      "text": "\n12. PEDIDO DE ACUMULAÇÃO DE BOLSA DE ESTUDO PARA O ANO LETIVO 2021/2022\nPelo Senhor Presidente foi presente a esta reunião a informação n.º **** do Serviço de Administração Escolar que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a o pedido de acumulação de bolsa de estudo para o ano letivo 2021/2022 a *****************."
+    },
+    {
+      "segment_id": 18,
+      "start_pos": 10306,
+      "end_pos": 11325,
+      "topics": [
+        "Património",
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        5,
+        15
+      ],
+      "personal_info": [],
+      "tema": "Aprovação dos trabalhos complementares do contrato relativos à Empreitada na Fortaleza de Juromenha",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, os trabalhos complementares do contrato relativos à Empreitada na Fortaleza de Juromenha. O Sr. Presidente da Câmara esclareceu tratar-se de trabalhos no valor de 36818,20€+IVA, identificados pelo empreiteiro no decurso da obra. Os trabalhos foram aprovados pela fiscalização. Foi também aprovada a minuta do 2.º adicional ao contrato.",
+      "text": " \n13. EMPREITADA \"FORTALEZA DE JUROMENHA -- CONSOLIDAÇÃO E RESTAURO DOS PARAMENTOS DO PERÍMETRO ABALUARTADO EXTERIOR E CERCA ISLÂMICA E MEDIEVAL INTERIOR\" -- TRABALHOS COMPLEMENTARES E MINUTA DO 2.º ADICIONAL AO CONTRATO\nPelo Senhor Presidente foi presente a esta reunião a informação n.º 13 da Divisão de Obras, Ambiente e Serviços Urbanos -- Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nSegundo o Sr. Presidente, trata-se de uma proposta de trabalhos complementares no valor de 36.818,20€ acrescidos de IVA, resultante da evolução da obra. Os trabalhos foram identificados pelo empreiteiro e validados pela fiscalização. Propõe-se também a aprovação da minuta apresentada. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar os trabalhos Complementares e a minuta do 2.º adicional ao contrato relativos à Empreitada \"Fortaleza de Juromenha -- Consolidação e Restauro dos Paramentos do Perímetro Abaluartado Exterior e Cerca Islâmica e Medieval Interior\"."
+    },
+    {
+      "segment_id": 19,
+      "start_pos": 11325,
+      "end_pos": 12441,
+      "topics": [
+        "Obras Públicas"
+      ],
+      "topic_ids": [
+        15
+      ],
+      "personal_info": [],
+      "tema": "Abertura do Concurso Público para a empreitada na Praia Fluvial Azenhas D'El Rei",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a abertura do Concurso Público para a empreitada na Praia Fluvial Azenhas D'El Rei. O Sr. Presidente da Câmara mencionou que a Câmara Municipal é o órgão competente e o valor base é de 296000,00€. Mais explicou que o concurso público proposto é para os trabalhos de requalificação do caminho de acesso.",
+      "text": " \n14. ABERTURA DE PROCEDIMENTO, PREÇO BASE, JÚRI, CRITÉRIO DE ADJUDICAÇÃO, CONTRATO, PEÇAS DO PROCEDIMENTO E ÓRGÃO COMPETENTE -- CONCURSO PÚBLICO N.º EMP/CP/002-2022 PARA A REALIZAÇÃO DA EMPREITADA \"REPAVIMENTAÇÃO DO CAMINHO DE ACESSO À PRAIA FLUVIAL DAS AZENHAS D'EL REI\"\nPelo Senhor Presidente foi presente a esta reunião a informação de 15 de fevereiro da Divisão de Obras, Ambiente e Serviços Urbanos -- Secção de Ordenamento e Obras Municipais que se anexa à presente ata. \nO Sr. Presidente afirmou que o órgão competente é a Câmara Municipal e o valor base é de 296.000,00€. Propõe-se a abertura de um concurso público para a realização deste investimento. A praia está prestes a ficar concluída e torna-se importante requalificar o caminho de acesso. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a abertura de procedimento, preço base, júri, critério de adjudicação, contrato, peças do procedimento e órgão competente do Concurso Público n.º EMP/CP/002-2022 para a realização da empreitada \"Repavimentação do caminho de acesso à praia fluvial das Azenhas D'El Rei\"."
+    },
+    {
+      "segment_id": 20,
+      "start_pos": 12441,
+      "end_pos": 12816,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 304,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 306,
+          "relative_start": 111,
+          "relative_end": 117
+        },
+        {
+          "id": 308,
+          "relative_start": 360,
+          "relative_end": 365
+        }
+      ],
+      "tema": "Aprovação das especialidades relativas a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n15. PROCESSO DE OBRAS N.º *****-- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as especialidades relativas ao Processo de obras n.º *****-- EDIFIC."
+    },
+    {
+      "segment_id": 21,
+      "start_pos": 12816,
+      "end_pos": 13191,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 311,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 313,
+          "relative_start": 111,
+          "relative_end": 117
+        },
+        {
+          "id": 315,
+          "relative_start": 360,
+          "relative_end": 365
+        }
+      ],
+      "tema": "Aprovação das especialidades relativas a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n16. PROCESSO DE OBRAS N.º *****-- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as especialidades relativas ao Processo de obras n.º *****-- EDIFIC."
+    },
+    {
+      "segment_id": 22,
+      "start_pos": 13191,
+      "end_pos": 13570,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 318,
+          "relative_start": 28,
+          "relative_end": 32
+        },
+        {
+          "id": 320,
+          "relative_start": 110,
+          "relative_end": 116
+        },
+        {
+          "id": 322,
+          "relative_start": 365,
+          "relative_end": 369
+        }
+      ],
+      "tema": "Aprovação de projeto de arquitetura",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o projeto de arquitetura relativo a um processo de obras particulares.",
+      "text": " \n17. PROCESSO DE OBRAS N.º ****-- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o projeto de arquitetura relativo ao Processo de obras n.º ****-- EDIFIC."
+    },
+    {
+      "segment_id": 23,
+      "start_pos": 13570,
+      "end_pos": 13945,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 325,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 327,
+          "relative_start": 112,
+          "relative_end": 117
+        },
+        {
+          "id": 329,
+          "relative_start": 360,
+          "relative_end": 365
+        }
+      ],
+      "tema": "Aprovação das especialidades relativas a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n18. PROCESSO DE OBRAS N.º ***** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ***** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as especialidades relativas ao Processo de obras n.º *****-- EDIFIC."
+    },
+    {
+      "segment_id": 24,
+      "start_pos": 13945,
+      "end_pos": 14320,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 332,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 334,
+          "relative_start": 112,
+          "relative_end": 117
+        },
+        {
+          "id": 336,
+          "relative_start": 360,
+          "relative_end": 365
+        }
+      ],
+      "tema": "Aprovação das especialidades relativas a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n19. PROCESSO DE OBRAS N.º ***** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ***** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as especialidades relativas ao Processo de obras n.º *****-- EDIFIC."
+    },
+    {
+      "segment_id": 25,
+      "start_pos": 14320,
+      "end_pos": 14694,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 339,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 341,
+          "relative_start": 111,
+          "relative_end": 116
+        },
+        {
+          "id": 343,
+          "relative_start": 359,
+          "relative_end": 364
+        }
+      ],
+      "tema": "Aprovação das especialidades relativas a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n20. PROCESSO DE OBRAS N.º ***** - EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º ***** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar as especialidades relativas ao Processo de obras n.º *****-- EDIFIC."
+    },
+    {
+      "segment_id": 26,
+      "start_pos": 14694,
+      "end_pos": 15040,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Alterações orçamentais",
+      "resumo": "O Executivo Municipal ratificou, por maioria, com uma abstenção, as alterações orçamentais.",
+      "text": " \n21. RATIFICAÇÕES ORÇAMENTAIS\nPelo Senhor Presidente foram presentes a esta reunião as informações da contabilidade que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, ratificar as alterações orçamentais."
+    },
+    {
+      "segment_id": 27,
+      "start_pos": 15040,
+      "end_pos": 15371,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Alteração orçamental",
+      "resumo": "O Executivo Municipal aprovou, por maioria, com uma abstenção, a alteração orçamental.",
+      "text": " \n22. ALTERAÇÃO ORÇAMENTAL\nPelo Senhor Presidente foi presente a esta reunião a informação da contabilidade que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, aprovar a alteração orçamental."
+    }
+  ],
+  "excluded_segments": [
+    {
+      "segment_number": 1,
+      "position": "first",
+      "start": 0,
+      "end": 2248,
+      "text": "REUNIÃO ORDINÁRIA 16/02/2022\nATA N.º 4\nCÂMARA MUNICIPAL DE ALANDROAL\nPresidiu o Senhor João Maria Aranha Grilo, Presidente da Câmara Municipal de Alandroal.\nVereadores João Carlos Camões Roma Balsante\nPaulo Jorge da Silva Gonçalves\nFernanda Manuela Brites Romão\nElisabete de Jesus dos Passos Galhardas\nSecretariou a Reunião Marta Cristina Simões da Silva Patacão Rodrigues\nNo Edifício Sede do Município de Alandroal, o Senhor Presidente da Câmara Municipal, João Maria Aranha Grilo, declarou aberta a reunião, eram 10.50 horas. \nPERÍODO DE ANTES DA ORDEM DO DIA\nO Sr. Presidente propôs a introdução de quatro novos pontos, que foi aprovada por unanimidade, ficando a mesma composta da seguinte forma: \nORDEM DO DIA\n1.  Informações.\n2.  Processos e requerimentos diversos.\n3.  Aprovação de ata.\n4.  Pedido de apoio da Creche da Cruz Vermelha de Santiago Maior.\n5.  Atribuição de Fundo de caixa fixo.\n6.  Protocolo de cooperação entre o Município de Alandroal e a Rádio Campanário.\n7.  Protocolo de cooperação entre o Município de Alandroal e o Instituto Nacional para a Reabilitação, I.P.\n8.  Memorando de entendimento entre o Município de Alandroal e a Universidade de Évora.\n9.  Comparticipação na mensalidade da creche.\n10. Atribuição de vales de compras alimentares.\n11. Atribuição de apoio à fixação de residência em habitação própria.\n12. Pedido de acumulação de bolsa de estudo para o ano letivo 2021/2022.\n13. Empreitada \"Fortaleza de Juromenha -- Consolidação e Restauro dos Paramentos do Perímetro Abaluartado Exterior e Cerca Islâmica e Medieval Interior\" -- Trabalhos Complementares - Proposta TC n.º 2 e Minuta do 2.º adicional ao contrato.\n14. Abertura de procedimento, preço base, júri, critério de adjudicação, contrato, peças do procedimento e órgão competente -- Concurso Público n.º EMP/CP/002-2022 para a realização da empreitada \"Repavimentação do caminho de acesso à praia fluvial das Azenhas D'El Rei\".\n15. Processo de obras n.º 34/21-- EDIFIC.\n16. Processo de obras n.º 17/21-- EDIFIC.\n17. Processo de obras n.º 2/22-- EDIFIC.\n18. Processo de obras n.º 37/21 -- EDIFIC.\n19. Processo de obras n.º 12/21 -- EDIFIC.\n20. Processo de obras n.º 25/20 - EDIFIC.\n21. Ratificações orçamentais.\n22. Alteração orçamental.\n1.INFORMAÇÕES\n",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "first_segment_removal"
+    },
+    {
+      "segment_number": 50,
+      "position": "last",
+      "start": 15371,
+      "end": 16024,
+      "text": " \nAPROVAÇÃO EM MINUTA\nA presente acta ficou lavrada, lida e aprovada em minuta, por unanimidade, no final desta reunião, nos termos e para os efeitos previstos no artigo 57.º, do Regime Jurídico das Autarquias, aprovado pela Lei nº 75/2013, de 12 de Setembro.\nE nada mais havendo a apreciar, ponderar ou deliberar, o Senhor Presidente da Câmara Municipal deu por encerrada esta reunião. Eram 11.15 horas. \nE eu, Marta Cristina Simões da Silva Patacão Rodrigues, designada para o efeito, lavrei, li e vou subscrever a presente acta. \nO PRESIDENTE DA CÂMARA MUNICIPAL,\nJOÃO MARIA ARANHA GRILO\nA SECRETÁRIA,\nMARTA CRISTINA SIMÕES DA SILVA PATACÃO RODRIGUES",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "last_segment_removal"
+    }
+  ],
+  "statistics": {
+    "total_segments": 27,
+    "segments_with_topics": 27,
+    "segments_with_personal_info": 16,
+    "unique_topics": [
+      "Obras Particulares",
+      "Ambiente",
+      "Património",
+      "Administração Geral, Finanças e Recursos Humanos",
+      "Cooperação Externa e Relações Internacionais",
+      "Trânsito, Transportes e Comunicações",
+      "Ação Social",
+      "Obras Públicas",
+      "Educação e Formação Profissional",
+      "Comunicação e Relações Públicas",
+      "Ciência"
+    ],
+    "total_characters": 13213
+  }
+}

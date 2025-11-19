@@ -1,0 +1,383 @@
+{
+  "document_id": "Alandroal_cm_011_2024-04-24",
+  "metadata": {
+    "source_file": "Alandroal_cm_011_2024-04-24.json",
+    "municipality": "Alandroal",
+    "year": "2024"
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_pos": 1724,
+      "end_pos": 1819,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Informação sobre o relatório da ROC em relação à prestação de contas de 2023",
+      "resumo": "O Sr. Presidente da Câmara apresentou o relatório da ROC em relação à prestação de contas de 2023.",
+      "text": "O Sr. Presidente deu conhecimento do relatório da ROC em relação à Prestação de contas de 2023."
+    },
+    {
+      "segment_id": 2,
+      "start_pos": 1819,
+      "end_pos": 2027,
+      "topics": [
+        "Cultura",
+        "Comunicação e Relações Públicas"
+      ],
+      "topic_ids": [
+        6,
+        20
+      ],
+      "personal_info": [],
+      "tema": "Participação do executivo na apresentação do Festival Soil to Soul",
+      "resumo": "O Sr. Presidente da Câmara informou que no dia 19 de abril o executivo participou, em Lisboa, na apresentação do Festival Soil to Soul, que decorrerá a 25 e 26 de maio no Castelo do Alandroal.",
+      "text": " \nContinuou por informar que no dia 19 o executivo participou na apresentação do Festival Soil to Soul, em Lisboa, que é já a segunda edição e que terá lugar nos dias 25 e 26 de maio, no Castelo do Alandroal."
+    },
+    {
+      "segment_id": 3,
+      "start_pos": 2027,
+      "end_pos": 2402,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Alterações orçamentais permutativas",
+      "resumo": "O Executivo Municipal aprovou, por maioria, com uma abstenção, as alterações orçamentais permutativas.",
+      "text": " \n2. ALTERAÇÃO ORÇAMENTAL PERMUTATIVA PARA RATIFICAÇÃO\nPelo Sr. Presidente foram presentes a reunião as informações da contabilidade que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, ratificar as alterações orçamentais permutativas."
+    },
+    {
+      "segment_id": 4,
+      "start_pos": 2402,
+      "end_pos": 2499,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Ausência de alteração orçamental permutativa",
+      "resumo": "Ausência de alteração orçamental permutativa para apresentar.",
+      "text": " \n3. ALTERAÇÃO ORÇAMENTAL PERMUTATIVA\nNão houve alteração orçamental permutativa para apresentar."
+    },
+    {
+      "segment_id": 5,
+      "start_pos": 2499,
+      "end_pos": 2712,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Aprovação da ata n.º 9, de 10.04.2024",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a ata n.º 9, de 2024-04-10.",
+      "text": " \n4. APROVAÇÃO DE ATA\nPelo Senhor Presidente foi presentes a reunião a ata n.º 9, de 10.04.2024. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a ata n.º 9, de 10.04.2024."
+    },
+    {
+      "segment_id": 6,
+      "start_pos": 2712,
+      "end_pos": 3355,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [],
+      "tema": "Pedido de apoio financeiro para as obras do Centro Social e Paroquial de Alandroal",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o pedido de apoio financeiro para as obras do Centro Social e Paroquial de Alandroal. O Sr. Presidente da Câmara explicou que o Centro Social pede apoio financeiro de 4.122,47 € (40% do total 10.366,18 €) para obras realizadas no edifício cedido pela Câmara.",
+      "text": " \n5. PROCESSOS E REQUERIMENTOS DIVERSOS\nPelo Sr. Presidente foi presente a reunião o pedido de apoio para obras do Centro Social e Paroquial de Alandroal que se anexa à presente ata. \nO Sr. Presidente explicou que se trata de um pedido de apoio financeiro para as obras que o Centro Social realizou no edifício que é da Câmara, na sequência da cedência de uma sala, no valor de 10.366,18€ e solicitam que a Câmara ajude com 40% desse valor e que corresponde a 4122.47€ \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o pedido de apoio financeiro para as obras do Centro Social e Paroquial de Alandroal."
+    },
+    {
+      "segment_id": 7,
+      "start_pos": 3355,
+      "end_pos": 5147,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos",
+        "Ação Social"
+      ],
+      "topic_ids": [
+        0,
+        11
+      ],
+      "personal_info": [],
+      "tema": "Proposta de atribuição do suplemento de penosidade e insalubridade",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade,  a proposta de atribuição do suplemento de penosidade e insalubridade. O Sr. Presidente explicou que a proposta visa alargar o subsídio, antes restrito a setores de maior risco (resíduos, saneamento, alcatrão), incluindo agora também canil, piscinas, limpeza urbana e casas de banho públicas, abrangendo trabalhadores do Centro de Saúde. Após parecer da CCDR e acordo com o Sindicato, a versão final foi entregue ontem, pedindo-se agora a aprovação, podendo ser adiada se não houver tempo para análise.",
+      "text": " \n6. ATRIBUIÇÃO DE SUBSÍDIOS DE PENOSIDADE\nPelo Senhor Presidente foi presente a reunião a proposta n.º 7 do Presidente que se anexa à presente ata. \nSegundo o Sr. Presidente, trata-se de uma proposta que alarga a abrangência do subsídio, em função de pareceres que se pediram à CCDR e das posições do Sindicato. Inicialmente, este subsídio foi pensado para os funcionários que correm riscos sérios na atividade diária, por exemplo, os trabalhadores da recolha de resíduos, do saneamento ou do alcatrão, por exemplo. Por pressão dos sindicatos e por afinação, foi-se alargando a outros setores e não fazia sentido que não se alargasse aos serviços do canil ou das piscinas, com a aplicação de produtos na rua, etc. Entretanto, o Sindicato foi propondo que se alargasse também às pessoas da limpeza. Pediu-se então um parecer à CCDR e, nesta sequência, fez-se uma proposta de adaptação onde já se incluiu também a limpeza das casas de banho dos edifícios públicos, onde estão incluídas as pessoas que trabalham no Centro de Saúde. Este ponto estava incluído na ordem do dia na expetativa que este processo se concluísse mais rapidamente, mas só ontem se entregou ao sindicato a versão final da proposta e ao final do dia recebemos a respetiva resposta, daí que só se tenha entregue a proposta hoje. Sendo um documento que está devidamente acordado por todos, solicita-se a aprovação nesta reunião, mas se se entender que não houve tempo para analisar os documentos, ficará para a próxima sessão. \nOs senhores vereadores concordaram em deliberar o assunto nesta reunião. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a proposta de atribuição do suplemento de penosidade e insalubridade -- artigo 3º, n.º 4 do Decreto-Lei n.º 93/2021, de 9 de dezembro."
+    },
+    {
+      "segment_id": 8,
+      "start_pos": 5147,
+      "end_pos": 5597,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Abate de equipamento",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, o abate de equipamento informático obsoleto.",
+      "text": " \n7. ABATE DE EQUIPAMENTO\nPelo Senhor Presidente foram presentes a reunião as informações n.º 2/2024 de 12 de abril do serviço de Património, na sequência da informação n.º 4789 do Gabinete de Informática e Modernização Administrativa que se anexam à presente ata. \nReferiu o Sr. Presidente tratar-se de equipamento informático obsoleto. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o abate de equipamento."
+    },
+    {
+      "segment_id": 9,
+      "start_pos": 5597,
+      "end_pos": 5883,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 158,
+          "relative_start": 111,
+          "relative_end": 115
+        },
+        {
+          "id": 159,
+          "relative_start": 118,
+          "relative_end": 122
+        }
+      ],
+      "tema": "Atribuição de dois subsídios de nascimento",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de dois subsídios de nascimento.",
+      "text": " \n8. ATRIBUIÇÃO DE SUBSÍDIOS DE NASCIMENTO\nPelo Senhor Presidente foram presentes a reunião as informações n.º **** e **** da Secção de Serviço Social. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de dois subsídios de nascimento."
+    },
+    {
+      "segment_id": 10,
+      "start_pos": 5883,
+      "end_pos": 6214,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 164,
+          "relative_start": 138,
+          "relative_end": 142
+        }
+      ],
+      "tema": "Atribuição de um apoio à fixação de residência em habitação própria",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de um apoio à fixação de residência em habitação própria.",
+      "text": " \n9. ATRIBUIÇÃO DE APOIO À FIXAÇÃO DE RESIDÊNCIA EM HABITAÇÃO PRÓPRIA\nPelo Senhor Presidente foi presente a esta reunião a informação n.º **** da Secção de Serviço Social. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de um apoio à fixação de residência em habitação própria."
+    },
+    {
+      "segment_id": 11,
+      "start_pos": 6214,
+      "end_pos": 6514,
+      "topics": [
+        "Ação Social"
+      ],
+      "topic_ids": [
+        11
+      ],
+      "personal_info": [
+        {
+          "id": 169,
+          "relative_start": 122,
+          "relative_end": 126
+        }
+      ],
+      "tema": "Atribuição de dois cartões sociais do Munícipe Idoso",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a atribuição de dois cartões sociais do Munícipe Idoso.",
+      "text": " \n10. ATRIBUIÇÃO DE CARTÕES SOCIAIS DO MUNÍCIPE IDOSO\nPelo Senhor Presidente foi presente a esta reunião a informação n.º **** da Secção de Serviço Social. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar a atribuição de dois cartões sociais do Munícipe Idoso."
+    },
+    {
+      "segment_id": 12,
+      "start_pos": 6514,
+      "end_pos": 7152,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos",
+        "Atividades Económicas",
+        "Cooperação Externa e Relações Internacionais"
+      ],
+      "topic_ids": [
+        0,
+        18,
+        19
+      ],
+      "personal_info": [],
+      "tema": "Ratificação do Protocolo de Cooperação entre a Associação de Desenvolvimento Montes Claros e a Câmara",
+      "resumo": "O Executivo Municipal ratificou por unanimidade, o Protocolo de Cooperação entre a Associação de Desenvolvimento Montes Claros e a Câmara. O Sr. Presidente informou que se trata de um protocolo para uma candidatura a formações modulares certificadas.",
+      "text": " \n11. RATIFICAÇÃO DO PROTOCOLO DE COOPERAÇÃO ENTRE A ASSOCIAÇÃO DE DESENVOLVIMENTO MONTES CLAROS E A CÂMARA MUNICIPAL DE ALANDROAL\nPelo Senhor Presidente foi presente a esta reunião o Protocolo de cooperação entre a Associação de Desenvolvimento Montes Claros e a Câmara Municipal de Alandroal que se anexa à presente ata. \nO Sr. Presidente afirmou que se trata de um protocolo para uma candidatura a formações modulares certificadas. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade ratificar o Protocolo de Cooperação entre a Associação de Desenvolvimento Montes Claros e a Câmara Municipal de Alandroal."
+    },
+    {
+      "segment_id": 13,
+      "start_pos": 7152,
+      "end_pos": 7479,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Revisão orçamental",
+      "resumo": "O Executivo Municipal aprovou, por maioria, com uma abstenção, a 2.ª revisão orçamental.",
+      "text": " \n12. 2ª REVISÃO ORÇAMENTAL\nPelo Senhor Presidente foi presente a esta reunião a 2ª revisão orçamental que se anexa à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, aprovar a 2ª revisão orçamental."
+    },
+    {
+      "segment_id": 14,
+      "start_pos": 7479,
+      "end_pos": 8247,
+      "topics": [
+        "Administração Geral, Finanças e Recursos Humanos"
+      ],
+      "topic_ids": [
+        0
+      ],
+      "personal_info": [],
+      "tema": "Assunção de compromissos plurianuais",
+      "resumo": "O Executivo Municipal aprovou, por maioria, com uma abstenção, a assunção de compromissos plurianuais. O Sr. Presidente informou que o FAM enviou parecer favorável à proposta de modificação do orçamento municipal de 2024, permitindo a sua aprovação.",
+      "text": " \n13. AUTORIZAÇÃO PRÉVIA DE ASSUNÇÃO DE COMPROMISSOS PLURIANUAIS\nPelo Senhor Presidente foram presentes a esta reunião os documentos relativos à assunção de compromissos plurianuais relativos à Loja do Cidadão, em Alandroal que se anexam à presente ata. \nPonderado e analisado o assunto o Executivo Municipal deliberou por maioria, com os votos a favor dos eleitos pelo PS e a abstenção da eleita pelo Nós, Cidadãos, aprovar a assunção de compromissos plurianuais. \nReferiu o Sr. Presidente que o FAM enviou então o parecer necessário para aprovação destes dois pontos e que refere que \"atendendo ao exposto propõe que a Direção Executiva do FAM emita parecer prévio positivo à proposta de modificação ao orçamento municipal de 2024 apresentado pela Câmara Municipal\"."
+    },
+    {
+      "segment_id": 15,
+      "start_pos": 8247,
+      "end_pos": 8623,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 185,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 187,
+          "relative_start": 127,
+          "relative_end": 133
+        },
+        {
+          "id": 189,
+          "relative_start": 360,
+          "relative_end": 365
+        }
+      ],
+      "tema": "Aprovação dos projetos de especialidades relativos a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, as especialidades relativas a um processo de obras particulares.",
+      "text": " \n14. PROCESSO DE OBRAS N.º ***** -- EDIFIC\nPelo Senhor Presidente foi Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar os projetos de especialidades relativos ao Processo de obras n.º ***** -- EDIFIC."
+    },
+    {
+      "segment_id": 16,
+      "start_pos": 8623,
+      "end_pos": 8998,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 192,
+          "relative_start": 28,
+          "relative_end": 32
+        },
+        {
+          "id": 194,
+          "relative_start": 127,
+          "relative_end": 133
+        },
+        {
+          "id": 196,
+          "relative_start": 359,
+          "relative_end": 363
+        }
+      ],
+      "tema": "Pedido de informação prévia relativo a Processo de obras",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, pedido de informação prévia relativo a um processo de obras particulares.",
+      "text": " \n15. PROCESSO DE OBRAS N.º **** -- INFPREV\nPelo Senhor Presidente foi Presidente foi presente a esta reunião a informação n.º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o pedido de informação prévia relativo ao Processo de obras n.º **** -- INFPREV."
+    },
+    {
+      "segment_id": 17,
+      "start_pos": 8998,
+      "end_pos": 9355,
+      "topics": [
+        "Obras Particulares"
+      ],
+      "topic_ids": [
+        17
+      ],
+      "personal_info": [
+        {
+          "id": 199,
+          "relative_start": 28,
+          "relative_end": 33
+        },
+        {
+          "id": 201,
+          "relative_start": 114,
+          "relative_end": 120
+        },
+        {
+          "id": 203,
+          "relative_start": 341,
+          "relative_end": 346
+        }
+      ],
+      "tema": "Aprovação de projeto de arquitetura",
+      "resumo": "O Executivo Municipal aprovou, por unanimidade, a legalização de projeto de arquitetura relativo a um processo de obras particulares.",
+      "text": " \n16. PROCESSO DE OBRAS N.º ***** -- EDIFIC\nPelo Senhor Presidente foi presente a esta reunião a informação n.º º ****** da Secção de Urbanismo e Fiscalização -- Serviço de Obras Particulares. \nPonderado e analisado o assunto o Executivo Municipal deliberou por unanimidade aprovar o projeto de arquitetura relativo ao Processo de obras n.º ***** -- EDIFIC."
+    }
+  ],
+  "excluded_segments": [
+    {
+      "segment_number": 1,
+      "position": "first",
+      "start": 0,
+      "end": 1724,
+      "text": "REUNIÃO ORDINÁRIA 24/04/2024 \nCÂMARA MUNICIPAL DE ALANDROAL \nATA N.º 11\nPresidiu o Senhor João Maria Aranha Grilo, Presidente da Câmara Municipal de Alandroal.\nVereadores João Carlos Camões Roma Balsante\nPaulo Jorge da Silva Gonçalves\nFernanda Manuela Brites Romão\nElisabete de Jesus dos Passos Galhardas\nSecretariou a Reunião Marta Cristina Simões da Silva Patacão Rodrigues\nNo Edifício Sede do Município de Alandroal, o Senhor Presidente da Câmara Municipal, João Maria Aranha Grilo, declarou aberta a reunião, eram 10.40 horas. \nPERÍODO DE ANTES DA ORDEM DO DIA\nO Sr. Presidente esclareceu que dois pontos para introduzir na ordem de trabalhos já tinham sido aprovados na anterior reunião e vieram novamente porque se deveria ter recebido um parecer do FAM e, por lapso, não se teve isso em conta. \nO Sr. Presidente propôs a introdução de três novos pontos, que foi aprovada por unanimidade, ficando a mesma composta da seguinte forma: \nORDEM DO DIA\n1.  Informações.\n2.  Alteração orçamental permutativa para ratificação.\n3.  Alteração orçamental permutativa.\n4.  Aprovação de ata.\n5.  Processos e requerimentos diversos.\n6.  Atribuição de subsídios de penosidade.\n7.  Abate de equipamento.\n8.  Atribuição de subsídios de nascimento.\n9.  Atribuição de apoio à fixação de residência em habitação própria.\n10. Atribuição de Cartões Sociais do Munícipe Idoso.\n11. Ratificação do Protocolo de cooperação entre a Associação de Desenvolvimento Montes Claros e a Câmara Municipal de Alandroal.\n12. 2ª revisão orçamental.\n13. Autorização prévia de assunção de compromissos plurianuais.\n14. Processo de obras n.º 34/23 -- EDIFIC.\n15. Processo de obras n.º 2/24 -- INFPREV.\n16. Processo de obras n.º 17/23 -- EDIFIC.\n1.INFORMAÇÕES\n",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "first_segment_removal"
+    },
+    {
+      "segment_number": 34,
+      "position": "last",
+      "start": 9355,
+      "end": 10006,
+      "text": " \nAPROVAÇÃO EM MINUTA\nA presente ata ficou lavrada, lida e aprovada em minuta, por unanimidade, no final desta reunião, nos termos e para os efeitos previstos no artigo 57.º, do Regime Jurídico das Autarquias, aprovado pela Lei nº 75/2013, de 12 de Setembro.\nE nada mais havendo a apreciar, ponderar ou deliberar, o Senhor Presidente da Câmara Municipal deu por encerrada esta reunião. Eram 11.00 horas. \nE eu, Marta Cristina Simões da Silva Patacão Rodrigues, designada para o efeito, lavrei, li e vou subscrever a presente ata. \nO PRESIDENTE DA CÂMARA MUNICIPAL,\nJOÃO MARIA ARANHA GRILO\nA SECRETÁRIA,\nMARTA CRISTINA SIMÕES DA SILVA PATACÃO RODRIGUES",
+      "is_relevant": false,
+      "topics": [],
+      "segment_type": "gap",
+      "reason": "last_segment_removal"
+    }
+  ],
+  "statistics": {
+    "total_segments": 17,
+    "segments_with_topics": 17,
+    "segments_with_personal_info": 6,
+    "unique_topics": [
+      "Cultura",
+      "Atividades Económicas",
+      "Obras Particulares",
+      "Administração Geral, Finanças e Recursos Humanos",
+      "Cooperação Externa e Relações Internacionais",
+      "Ação Social",
+      "Comunicação e Relações Públicas"
+    ],
+    "total_characters": 7681
+  }
+}
