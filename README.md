@@ -1,6 +1,6 @@
 ![CitiLink-Summ Header](./docs/assets/header.png)
 
-# CitiLink-Summ: A Benchmark for Summarization of Discussion Subjects in European Portuguese Municipal Meeting Minutes
+# CitiLink-Summ: A Dataset of Discussion Subjects Summaries in European Portuguese Municipal Meeting Minutes
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](LICENSE)
 [![Python 3.10](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/Framework-PyTorch-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org/)
@@ -9,7 +9,7 @@
 
 
 Official repository for the paper submission  
-**“CitiLink-Summ: A Benchmark for Summarization of Discussion Subjects in European Portuguese Municipal Meeting Minutes”**  
+**“CitiLink-Summ: A Dataset of Discussion Subjects Summaries in European Portuguese Municipal Meeting Minutes”**  
 for **The Web Conference (WWW) 2026**.
 
 This repository provides a **dataset sample**, **baseline implementations**, and the **summarization guidelines** used during data creation.
