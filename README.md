@@ -47,7 +47,7 @@ The *complete dataset* will be released soon.
 
 ## 🏗️ Architecture
 
-![CitiLink-Summ Architecture](./docs/assets/architecture.png)
+![CitiLink-Summ Architecture](./docs/assets/architecture2.png)
 
 The CitiLink-Summ workflow consists of:
 
@@ -151,8 +151,8 @@ in collaboration with:
 
 For support, questions, or collaboration inquiries:
 
-- **Email:** ricardo.campos@ubi.pt & miguel.alexandre.marques@ubi.pt  
-- **Corresponding Authors:** Ricardo Campos (INESC TEC & UBI) & Miguel Marques (INESC TEC & UBI)
+- **Email:** ricardo.campos@ubi.pt & miguel.alexandre.marques@ubi.pt & nuno.r.guimaraes@inesctec.pt 
+- **Corresponding Authors:** Ricardo Campos (INESC TEC & UBI) & Miguel Marques (INESC TEC & UBI) & Nuno Guimarães (INESC TEC & UP)
 
 ---
 
