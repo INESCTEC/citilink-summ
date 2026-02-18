@@ -8,7 +8,7 @@
 [![LLMs](https://img.shields.io/badge/Models-BART%20|%20PRIMERA%20|%20PTT5%20|%20Gemini%20|%20Qwen-6f42c1.svg)]
 
 
-Official repository for the paper submission  
+Official repository for the accepted paper
 **“CitiLink-Summ: A Dataset of Discussion Subjects Summaries in European Portuguese Municipal Meeting Minutes”**  
 for **The Web Conference (WWW) 2026**.
 
@@ -41,7 +41,7 @@ The *complete dataset* will be released soon.
 
 - **Language:** Python  
 - **Frameworks:** PyTorch, Hugging Face Transformers  
-- **Models:** BART (base/large), PRIMERA, **PTT5**, Gemini Flash, Qwen  
+- **Models:** BART (base/large), PRIMERA, PTT5,LED, Gemini Flash, Qwen  
 
 ---
 
@@ -212,8 +212,8 @@ This project is licensed under the **Creative Commons BY-NC-SA 4.0 License** —
 
 - **CitiLink Project:** [https://citilink.inesctec.pt/](https://citilink.inesctec.pt/)  
 - **CitiLink-Summ Paper (preprint):** *Coming soon*  
-- **CitiLink Dataset:** *Coming soon*
-
+- **CitiLink Dataset:** [https://github.com/INESCTEC/citilink-dataset](https://github.com/INESCTEC/citilink-dataset)
+- **CitiLink-Summ Dataset**: *Coming soon*
 ---
 
 ## 👥 Credits and Acknowledgements
