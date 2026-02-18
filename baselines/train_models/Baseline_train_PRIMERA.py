@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import torch
 from typing import List, Dict, Any, Union
+import argparse
 
 # Third-party libraries
 from datasets import Dataset
@@ -21,10 +22,7 @@ import evaluate
 # 🚀 Configuration Constants
 # ==============================================================================
 
-# Define paths for the dataset
-TRAIN_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/train"
-# --- 🎯 ADDED VALIDATION FOLDER ---
-VAL_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/val" 
+# PRIMERA script will read a single citilink JSON file supplied via CLI
 
 # Model Checkpoint (PRIMERA is based on LongT5)
 CHECKPOINT: str = "allenai/PRIMERA"
@@ -44,51 +42,42 @@ PRIMERA_PREFIX: str = "summarize: "
 # 💾 Data Loading and Preparation Functions
 # ==============================================================================
 
-def load_segments_from_folder(folder_path: str) -> pd.DataFrame:
+# dataset loader reused from the other scripts
+
+def load_citilink(filepath: str) -> pd.DataFrame:
     """
-    Loads text and summary segments from all JSON files in a specified folder.
-    
+    Read a consolidated citilink JSON and return a flat DataFrame.
+
+    The dataset file is expected to use the CitiLink-Summ format. In brief, it
+    contains a top-level ``municipalities`` list, each entry holding a
+    ``minutes`` list, and each minute containing an ``agenda_items`` list.
+    Only those items with both ``text`` and ``summary`` are loaded.
+
     Args:
-        folder_path: The path to the directory containing the JSON dataset files.
+        filepath: path to the single JSON dataset file.
 
     Returns:
-        A pandas DataFrame where each row represents a segment
-        with columns: 'document_id', 'text', 'resumo', and 'tema'.
+        DataFrame with columns ``texto`` and ``sumario`` ready for further
+        processing (chunking/tokenization) in this script.
     """
-    all_segments: List[Dict[str, str]] = []
-    
-    if not os.path.isdir(folder_path):
-        print(f"Error: Folder not found at {folder_path}")
+    all_rows: List[Dict[str, str]] = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # pragma: no cover
+        print(f"Unable to load {filepath}: {exc}")
         return pd.DataFrame()
 
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".json"):
-            path = os.path.join(folder_path, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    doc: Dict[str, Any] = json.load(f)
-                    
-                if "segments" in doc and isinstance(doc["segments"], list):
-                    for i, seg in enumerate(doc["segments"]):
-                        if "resumo" not in seg or not seg.get("text"):
-                            print(f"Warning: Skipping segment {i} in '{filename}' due to missing 'resumo' or 'text'.")
-                            continue
-                        
-                        all_segments.append({
-                            "document_id": doc.get("document_id", "N/A"),
-                            "text": seg["text"],
-                            "resumo": seg["resumo"],
-                            "tema": seg.get("tema", "")
-                        })
-                else:
-                    print(f"Warning: '{filename}' does not contain a 'segments' list.")
+    for muni in data.get("municipalities", []):
+        for minute in muni.get("minutes", []):
+            for item in minute.get("agenda_items", []):
+                text = item.get("text")
+                summary = item.get("summary")
+                if not text or not summary:
+                    continue
+                all_rows.append({"texto": text, "sumario": summary})
 
-            except json.JSONDecodeError:
-                print(f"Error: Could not decode JSON in file: {filename}")
-            except Exception as e:
-                print(f"An unexpected error occurred while processing '{filename}': {e}")
-
-    return pd.DataFrame(all_segments)
+    return pd.DataFrame(all_rows)
 
 
 def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_LENGTH, stride: int = CHUNK_STRIDE) -> List[str]:
@@ -123,30 +112,26 @@ def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_
 
 def prepare_dataset(df: pd.DataFrame) -> Dataset:
     """
-    Processes the raw DataFrame by chunking long texts. Each chunk is paired 
-    with the original summary ('resumo').
-    
+    Processes the raw DataFrame by chunking long texts. Each chunk is paired
+    with the original summary (``sumario``).
+
     Args:
-        df: The input DataFrame containing 'text' and 'resumo' columns.
+        df: The input DataFrame containing ``texto`` and ``sumario`` columns.
 
     Returns:
-        A Hugging Face Dataset object with 'texto' (chunk) and 'sumario' (summary/label).
+        A Hugging Face Dataset object with ``texto`` (chunk) and ``sumario``
+        (summary/label).
     """
     processed_rows: List[Dict[str, str]] = []
-    
+
     for _, row in df.iterrows():
-        # Chunk the text
-        text_chunks: List[str] = chunk_text(str(row["text"]), tokenizer)
-        
-        # --- 🎯 KEY DIFFERENCE FROM BART EXAMPLE ---
-        # For PRIMERA (LongT5-based), we typically pair *each chunk* with the
-        # *full summary* to enable chunk-level training for long document summarization.
+        text_chunks: List[str] = chunk_text(str(row["texto"]), tokenizer)
         for chunk in text_chunks:
             processed_rows.append({
                 "texto": chunk,
-                "sumario": str(row["resumo"])
+                "sumario": str(row["sumario"])
             })
-        
+
     return Dataset.from_pandas(pd.DataFrame(processed_rows))
 
 
@@ -239,35 +224,52 @@ def compute_metrics(eval_preds: tuple) -> Dict[str, float]:
 # ==============================================================================
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Fine-tune PRIMERA on the citilink summarization dataset"
+    )
+    parser.add_argument("input", help="path to citilink JSON file")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="random seed used for splitting (60/20/20)")
+    parser.add_argument("--output-dir", default="./results_primera_segments",
+                        help="directory where model checkpoints/logs are written")
+    parser.add_argument("--epochs", type=int, default=3,
+                        help="number of training epochs")
+    parser.add_argument("--batch-size", type=int, default=1,
+                        help="per-device train batch size")
+    args = parser.parse_args()
+
     print(f"✨ Starting PRIMERA Summarization Model Setup and Training with checkpoint: {CHECKPOINT}")
 
-    # --- 1. Data Loading ---
-    train_df: pd.DataFrame = load_segments_from_folder(TRAIN_FOLDER)
-    # --- 🎯 LOAD VALIDATION DATA ---
-    val_df: pd.DataFrame = load_segments_from_folder(VAL_FOLDER)
-    print(f"Loaded {len(train_df)} training segments and {len(val_df)} validation segments.")
+    # --- 1. Data Loading & Split ---
+    df: pd.DataFrame = load_citilink(args.input)
+    print(f"loaded {len(df)} agenda items from {args.input}")
+
+    df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
+    n_total = len(df)
+    n_train = int(0.6 * n_total)
+    n_val = int(0.2 * n_total)
+    train_df = df.iloc[:n_train]
+    val_df = df.iloc[n_train : n_train + n_val]
+    test_df = df.iloc[n_train + n_val :]
+    print(f"split into {len(train_df)} train / {len(val_df)} val / {len(test_df)} test")
 
     # --- 2. Model and Tokenizer Initialization ---
     try:
         tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(CHECKPOINT)
         model: AutoModelForSeq2SeqLM = AutoModelForSeq2SeqLM.from_pretrained(CHECKPOINT)
-        # Enable gradient checkpointing to save GPU memory, critical for large models like PRIMERA
-        model.gradient_checkpointing_enable() 
+        model.gradient_checkpointing_enable()
     except Exception as e:
         print(f"Failed to load model or tokenizer: {e}")
         exit()
 
     # --- 3. Dataset Preparation ---
     train_dataset: Dataset = prepare_dataset(train_df)
-    # --- 🎯 PREPARE VALIDATION DATASET ---
     val_dataset: Dataset = prepare_dataset(val_df)
     print(f"Training dataset size (chunks): {len(train_dataset)}")
     print(f"Validation dataset size (chunks): {len(val_dataset)}")
 
-
     # --- 4. Tokenization (Mapping) ---
     tokenized_train: Dataset = train_dataset.map(preprocess_function, batched=True)
-    # --- 🎯 TOKENIZE VALIDATION DATASET ---
     tokenized_val: Dataset = val_dataset.map(preprocess_function, batched=True)
     print("Tokenization complete.")
 
@@ -275,25 +277,22 @@ if __name__ == "__main__":
     use_fp16: bool = torch.cuda.is_available()
     print(f"FP16 training enabled: {use_fp16}")
 
-    # PRIMERA is large, so small batch size and gradient accumulation are essential.
     training_args = TrainingArguments(
-        output_dir="./results_primera_segments",
-        # --- 🎯 ADD EVALUATION CONFIGURATION ---
-        eval_strategy="steps",              # Evaluate every 'eval_steps'
-        eval_steps=100,                     # Run evaluation every 100 steps
-        save_strategy="steps",              # Save checkpoint every 'save_steps'
-        save_steps=100,                     # Save every 100 steps
-        load_best_model_at_end=True,        # Load the model with the best validation metric
-        metric_for_best_model="rougeL",     # Use ROUGE-L to determine the best model
-        # ----------------------------------------
+        output_dir=args.output_dir,
+        eval_strategy="steps",
+        eval_steps=100,
+        save_strategy="steps",
+        save_steps=100,
+        load_best_model_at_end=True,
+        metric_for_best_model="rougeL",
         learning_rate=2e-5,
-        per_device_train_batch_size=1,      # Extremely low batch size due to model size
-        num_train_epochs=3,
+        per_device_train_batch_size=args.batch_size,
+        num_train_epochs=args.epochs,
         weight_decay=0.01,
         save_total_limit=1,
         logging_steps=20,
         fp16=use_fp16,
-        gradient_accumulation_steps=4       # Accumulate gradients over 4 batches to simulate batch size of 4
+        gradient_accumulation_steps=4
     )
 
     data_collator: DataCollatorForSeq2Seq = DataCollatorForSeq2Seq(tokenizer, model=model)
@@ -302,10 +301,8 @@ if __name__ == "__main__":
         model=model,
         args=training_args,
         train_dataset=tokenized_train,
-        # --- 🎯 ADD VALIDATION DATASET & METRICS ---
         eval_dataset=tokenized_val,
         compute_metrics=compute_metrics,
-        # -------------------------------------------
         tokenizer=tokenizer,
         data_collator=data_collator
     )
@@ -316,9 +313,8 @@ if __name__ == "__main__":
     print("--- Training Complete ---")
 
     # --- 7. Save Final Model and Tokenizer ---
-    FINAL_SAVE_PATH: str = "./trained_primera_segments"
+    FINAL_SAVE_PATH: str = os.path.join(args.output_dir, "final")
     print(f"Saving final model to: {FINAL_SAVE_PATH}")
-    # The best model based on validation metrics is automatically loaded and saved here
     trainer.save_model(FINAL_SAVE_PATH)
     tokenizer.save_pretrained(FINAL_SAVE_PATH)
     print("Model and tokenizer saved successfully.")

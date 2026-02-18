@@ -5,6 +5,7 @@ import pandas as pd
 import torch
 import evaluate
 from typing import List, Dict, Any, Union
+import argparse
 
 # Third-party libraries
 from datasets import Dataset
@@ -21,10 +22,7 @@ from transformers import (
 # 🚀 Configuration Constants
 # ==============================================================================
 
-# Define paths for the dataset
-TRAIN_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/train"
-# 🎯 ADDED VALIDATION FOLDER
-VAL_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/val" 
+# The script reads a single citilink JSON file supplied via CLI
 
 # Model Checkpoint (PTT5 - T5 for Portuguese)
 CHECKPOINT: str = "unicamp-dl/ptt5-base-portuguese-vocab"
@@ -40,44 +38,42 @@ T5_PREFIX: str = "summarize: "
 # 💾 Data Loading and Preparation Functions
 # ==============================================================================
 
-def load_segments_from_folder(folder_path: str) -> pd.DataFrame:
+# reuse the common loader from other scripts
+
+def load_citilink(filepath: str) -> pd.DataFrame:
     """
-    Loads text and summary segments from all JSON files in a specified folder.
-    
+    Read a consolidated citilink JSON and return a flat DataFrame.
+
+    The dataset file is expected to use the CitiLink-Summ format. In brief, it
+    contains a top-level ``municipalities`` list, each entry holding a
+    ``minutes`` list, and each minute containing an ``agenda_items`` list.
+    Only those items with both ``text`` and ``summary`` are loaded.
+
     Args:
-        folder_path: The path to the directory containing the JSON dataset files.
+        filepath: path to the single JSON dataset file.
 
     Returns:
-        A pandas DataFrame where each row represents a segment.
+        DataFrame with columns ``texto`` and ``sumario`` ready for further
+        processing (chunking/tokenization) in this script.
     """
-    all_segments: List[Dict[str, str]] = []
-    
-    if not os.path.isdir(folder_path):
-        print(f"Error: Folder not found at {folder_path}")
+    all_rows: List[Dict[str, str]] = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # pragma: no cover
+        print(f"Unable to load {filepath}: {exc}")
         return pd.DataFrame()
 
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".json"):
-            path = os.path.join(folder_path, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    doc: Dict[str, Any] = json.load(f)
-                    
-                if "segments" in doc and isinstance(doc["segments"], list):
-                    for seg in doc["segments"]:
-                        if "resumo" not in seg or not seg.get("text"):
-                            continue
-                        
-                        all_segments.append({
-                            "document_id": doc.get("document_id", "N/A"),
-                            "text": seg["text"],
-                            "resumo": seg["resumo"],
-                            "tema": seg.get("tema", "")
-                        })
-            except Exception as e:
-                print(f"Error processing file '{filename}': {e}")
+    for muni in data.get("municipalities", []):
+        for minute in muni.get("minutes", []):
+            for item in minute.get("agenda_items", []):
+                text = item.get("text")
+                summary = item.get("summary")
+                if not text or not summary:
+                    continue
+                all_rows.append({"texto": text, "sumario": summary})
 
-    return pd.DataFrame(all_segments)
+    return pd.DataFrame(all_rows)
 
 
 def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_LENGTH, stride: int = CHUNK_STRIDE) -> List[str]:
@@ -112,28 +108,26 @@ def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_
 
 def prepare_dataset(df: pd.DataFrame) -> Dataset:
     """
-    Processes the raw DataFrame by chunking long texts. Each chunk is paired 
-    with the original summary ('resumo').
-    
+    Processes the raw DataFrame by chunking long texts. Each chunk is paired
+    with the original summary (``sumario``).
+
     Args:
-        df: The input DataFrame containing 'text' and 'resumo' columns.
+        df: The input DataFrame containing ``texto`` and ``sumario`` columns.
 
     Returns:
-        A Hugging Face Dataset object with 'texto' (chunk) and 'sumario' (summary/label).
+        A Hugging Face Dataset object with ``texto`` (chunk) and ``sumario``
+        (summary/label).
     """
     processed_rows: List[Dict[str, str]] = []
-    
+
     for _, row in df.iterrows():
-        # Chunk the text
-        text_chunks: List[str] = chunk_text(str(row["text"]), tokenizer)
-        
-        # Pair each chunk with the segment summary
+        text_chunks: List[str] = chunk_text(str(row["texto"]), tokenizer)
         for chunk in text_chunks:
             processed_rows.append({
                 "texto": chunk,
-                "sumario": str(row["resumo"])
+                "sumario": str(row["sumario"])
             })
-        
+
     return Dataset.from_pandas(pd.DataFrame(processed_rows))
 
 
@@ -223,14 +217,34 @@ def compute_metrics(eval_preds: tuple) -> Dict[str, float]:
 # ==============================================================================
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Fine-tune PTT5 on the citilink summarization dataset"
+    )
+    parser.add_argument("input", help="path to citilink JSON file")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="random seed used for splitting (60/20/20)")
+    parser.add_argument("--output-dir", default="./results_ptt5_segments",
+                        help="directory where model checkpoints/logs are written")
+    parser.add_argument("--epochs", type=int, default=3,
+                        help="number of training epochs")
+    parser.add_argument("--batch-size", type=int, default=1,
+                        help="per-device train batch size")
+    args = parser.parse_args()
+
     print(f"✨ Starting PTT5 Summarization Model Setup and Training with checkpoint: {CHECKPOINT}")
 
-    # --- 1. Data Loading ---
-    train_df: pd.DataFrame = load_segments_from_folder(TRAIN_FOLDER)
-    # 🎯 LOAD VALIDATION DATA
-    val_df: pd.DataFrame = load_segments_from_folder(VAL_FOLDER)
-    print(f"Loaded {len(train_df)} training segments and {len(val_df)} validation segments.")
+    # --- 1. Data Loading & Split ---
+    df: pd.DataFrame = load_citilink(args.input)
+    print(f"loaded {len(df)} agenda items from {args.input}")
 
+    df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
+    n_total = len(df)
+    n_train = int(0.6 * n_total)
+    n_val = int(0.2 * n_total)
+    train_df = df.iloc[:n_train]
+    val_df = df.iloc[n_train : n_train + n_val]
+    test_df = df.iloc[n_train + n_val :]
+    print(f"split into {len(train_df)} train / {len(val_df)} val / {len(test_df)} test")
     # --- 2. Model and Tokenizer Initialization ---
     try:
         tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(CHECKPOINT)

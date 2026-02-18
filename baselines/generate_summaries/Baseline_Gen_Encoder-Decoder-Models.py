@@ -1,5 +1,6 @@
 import os
 import json
+import argparse
 from tqdm import tqdm
 import torch
 import pandas as pd
@@ -7,31 +8,89 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from sklearn.model_selection import train_test_split
 from typing import List, Dict, Any, Union, Tuple, Optional
 
+# the loader below mirrors the one used in training scripts
+
 # ===============================================================
 # CONFIGURATION
 # ===============================================================
-# Relative path to the directory containing the original dataset's JSON files.
-# Assumes the script is being run from a subfolder of the main directory.
-DATASET_FOLDER: str = "../dataset"
-# A base model used to determine a reasonable maximum token length.
+# Path to the aggregated citilink_summ JSON file will be supplied on the command line
+# A base model used to determine a reasonable maximum token length (unused)
 BASE_CHECKPOINT: str = "allenai/primera"
 # The size of the overlap (stride) between consecutive text chunks.
 CHUNK_STRIDE: int = 256
-# Fraction of the total dataset to reserve for validation.
+# default fraction of the dataset to reserve for validation (overridable via CLI)
 VALIDATION_SPLIT: float = 0.1
 
 # Dictionary mapping descriptive model names to their relative paths.
 # Using relative paths facilitates deployment across different environments.
 model_paths: Dict[str, str] = {
-    "BART (Fine-tuned for CitiLink)": "../train_models/trained_bart_segments",
-    "BART Large (Fine-tuned for citilink)": "../train_models/trained_bart_large_segments",
-    "Primera (Fine-tuned for CitiLink)": "../train_models/trained_primera_segments",
+    # Use the relative paths you provided (relative to this script folder)
+    "BART (Fine-tuned for CitiLink)": "../train_models/results_bart_segments/final",
+    "BART Large (Fine-tuned for citilink)": "../train_models/results_bart_large_segments/final",
+    "LED (Fine-tuned for CitiLink)": "../train_models/results_led_segments",
+    "Primera (Fine-tuned for CitiLink)": "../train_models/results_primera_segments/final",
     "PTT5": "../train_models/trained_ptt5_segments"
 }
 
 # ===============================================================
 # UTILITIES
 # ===============================================================
+
+def load_citilink(filepath: str) -> pd.DataFrame:
+    """
+    Read a consolidated citilink JSON and return a flat DataFrame.
+
+    The dataset file is expected to use the CitiLink-Summ format. In brief, it
+    contains a top-level ``municipalities`` list, each entry holding a
+    ``minutes`` list, and each minute containing an ``agenda_items`` list.
+    Only those items with both ``text`` and ``summary`` are loaded.
+
+    Args:
+        filepath: path to the single JSON dataset file.
+
+    Returns:
+        DataFrame with columns ``texto`` and ``sumario`` ready for further
+        processing (chunking/tokenization) in this script.
+    """
+    all_rows: List[Dict[str, str]] = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # pragma: no cover
+        print(f"Unable to load {filepath}: {exc}")
+        return pd.DataFrame()
+
+    for muni in data.get("municipalities", []):
+        muni_name = muni.get("municipality", "")
+        for minute in muni.get("minutes", []):
+            # minute-level metadata
+            minute_source = minute.get("source_file", "") or minute.get("file", "")
+            # try to extract a year if provided at minute-level
+            minute_year = minute.get("year", "")
+            for item in minute.get("agenda_items", []):
+                text = item.get("text") or item.get("texto")
+                summary = item.get("summary") or item.get("resumo")
+                if not text or not summary:
+                    continue
+
+                # item-level metadata (use sensible fallbacks)
+                segment_id = item.get("segment_id") or item.get("id") or ""
+                tema = item.get("theme") or item.get("tema") or item.get("title") or ""
+                source = item.get("source_file") or minute_source or ""
+                year = item.get("year") or minute_year or ""
+
+                all_rows.append({
+                    "texto": text,
+                    "sumario": summary,
+                    "segment_id": segment_id,
+                    "tema": tema,
+                    "source_file": source,
+                    "municipality": muni_name,
+                    "year": year,
+                })
+
+    return pd.DataFrame(all_rows)
+
 
 def chunk_text_dynamic(text: str, tokenizer: AutoTokenizer, max_length: int, stride: int = CHUNK_STRIDE) -> List[str]:
     """
@@ -85,17 +144,17 @@ def prepare_dataset(df: pd.DataFrame, tokenizer: AutoTokenizer, model_max_len: i
     # Iterate over each segment in the validation/test set
     for _, row in tqdm(df.iterrows(), total=len(df), desc="Splitting Dataset into Chunks"):
         # Split the text into overlapping chunks
-        text_chunks: List[str] = chunk_text_dynamic(str(row["text"]), tokenizer, max_length=model_max_len)
+        text_chunks: List[str] = chunk_text_dynamic(str(row.get("texto", row.get("text", ""))), tokenizer, max_length=model_max_len)
         
         processed_rows.append({
             "chunks": text_chunks,
-            "sumario": str(row["resumo"]), # Original summary (resumo)
-            "titulo": row.get("tema", ""), # Original topic (tema)
-            "segment_id": row["segment_id"],
-            "text": row["text"],
-            "source_file": row["source_file"],
-            "municipality": row["municipality"],
-            "year": row["year"]
+            "sumario": str(row.get("sumario", row.get("resumo", ""))),
+            "titulo": row.get("tema", ""),
+            "segment_id": row.get("segment_id", ""),
+            "text": row.get("texto", row.get("text", "")),
+            "source_file": row.get("source_file", ""),
+            "municipality": row.get("municipality", ""),
+            "year": row.get("year", "")
         })
         
     return processed_rows
@@ -105,28 +164,39 @@ def load_model(name: str) -> Dict[str, Union[AutoModelForSeq2SeqLM, AutoTokenize
     """
     Loads a Seq2Seq model and its tokenizer, determines the maximum context length,
     and moves the model to the appropriate device (CUDA or CPU).
-    
+
     Args:
         name: The Hugging Face model ID or local path.
-        
+
     Returns:
         A dictionary containing the model, tokenizer, max_length, and device.
     """
     # Use CUDA if available, otherwise fall back to CPU
     device: torch.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
-    
-    tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(name, use_fast=True)
+
+    # convert relative paths to absolute to avoid hub parsing issues
+    if os.path.exists(name):
+        name = os.path.abspath(name)
+        local_flag = True
+    else:
+        local_flag = False
+
+    tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(
+        name, use_fast=True, local_files_only=local_flag
+    )
     # Load the model and ensure it's on the correct device
-    model: AutoModelForSeq2SeqLM = AutoModelForSeq2SeqLM.from_pretrained(name)
+    model: AutoModelForSeq2SeqLM = AutoModelForSeq2SeqLM.from_pretrained(
+        name, local_files_only=local_flag
+    )
     model.to(device)
-    model.eval() # Set the model to evaluation mode
-    
+    model.eval()  # Set the model to evaluation mode
+
     # Determine the maximum context window length of the model (priority: config > tokenizer > default)
-    max_length: int = getattr(model.config, 'max_position_embeddings', 
+    max_length: int = getattr(model.config, 'max_position_embeddings',
                               getattr(model.config, 'n_positions',
                                       getattr(tokenizer, 'model_max_length', 512)))
-    
+
     return {"model": model, "tokenizer": tokenizer, "max_length": max_length, "device": device}
 
 def safe_prompt(document: str, model_name: str) -> str:
@@ -156,44 +226,44 @@ def get_generation_tokens(model_name: str) -> Tuple[int, int]:
 
 # ---------------- MAIN EXECUTION ----------------
 def main():
+    parser = argparse.ArgumentParser(description="Generate summaries for validation segments using multiple models.")
+    parser.add_argument("input", help="path to citilink JSON file")
+    parser.add_argument("--val-split", type=float, default=VALIDATION_SPLIT,
+                        help="fraction of examples reserved for validation (deprecated; use --split to control 60/20/20)")
+    parser.add_argument("--split", type=float, default=0.2,
+                        help="fraction for validation and test each (default 0.2 => 60/20/20)")
+    parser.add_argument("--models-root", type=str, default="../train_models",
+                        help="base directory where trained model folders are located (default ../train_models)")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="random seed for splitting")
+    args = parser.parse_args()
+
     # --- 1. Load All Data Segments ---
-    all_segments: List[Dict[str, Any]] = []
-    print(f"Loading data from {DATASET_FOLDER}...")
-    
-    # Iterate over all JSON files in the dataset folder
-    for filename in os.listdir(DATASET_FOLDER):
-        if filename.endswith(".json"):
-            path = os.path.join(DATASET_FOLDER, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    doc = json.load(f)
-                    
-                # Extract segment data along with metadata
-                for seg in doc.get("segments", []):
-                    all_segments.append({
-                        "document_id": doc.get("document_id", "N/A"),
-                        "segment_id": seg.get("segment_id", "N/A"),
-                        "text": seg.get("text", ""),
-                        "resumo": seg.get("resumo", ""),
-                        "tema": seg.get("tema", ""),
-                        "source_file": doc["metadata"].get("source_file", ""),
-                        "municipality": doc["metadata"].get("municipality", ""),
-                        "year": doc["metadata"].get("year", "")
-                    })
-            except Exception as e:
-                print(f"Warning: Could not load or parse file {filename}: {e}")
-                
-    df: pd.DataFrame = pd.DataFrame(all_segments)
+    print(f"Loading data from {args.input}...")
+    df: pd.DataFrame = load_citilink(args.input)
     print(f"Total segments loaded: {len(df)}")
 
-    # --- 2. Create Validation Split ---
+    # rename columns if necessary to match expected names
+    df = df.rename(columns={"texto": "text", "sumario": "resumo"})
+
+    # --- 2. Create Train/Validation/Test Split (60/20/20 by default) ---
     if len(df) == 0:
         print("Dataset is empty. Exiting.")
         return
 
-    # Use a fixed random state for reproducibility
-    _, val_df = train_test_split(df, test_size=VALIDATION_SPLIT, random_state=42)
-    print(f"Validation set size: {len(val_df)} segments ({VALIDATION_SPLIT * 100:.1f}% of total).")
+    # args.split indicates fraction for validation and test each (e.g., 0.2 -> 60/20/20)
+    val_fraction = float(args.split)
+    if not (0.0 < val_fraction < 0.5):
+        print("--split must be >0 and <0.5 (fraction for validation and test each). Exiting.")
+        return
+
+    # First carve out train (1 - 2*val_fraction) vs temp (2*val_fraction)
+    train_frac = 1.0 - 2.0 * val_fraction
+    train_df, temp_df = train_test_split(df, test_size=1.0 - train_frac, random_state=args.seed)
+    # Split the temp into validation and test equally
+    val_df, test_df = train_test_split(temp_df, test_size=0.5, random_state=args.seed)
+
+    print(f"Train/Val/Test sizes: {len(train_df)}/{len(val_df)}/{len(test_df)} ({train_frac*100:.1f}%/{val_fraction*100:.1f}%/{val_fraction*100:.1f}%).")
 
     precomputed_data: List[Dict[str, Any]] = []
 
@@ -202,12 +272,71 @@ def main():
         print("\n" + "="*40)
         print(f"=== Starting Generation for: {model_name} ===")
         print("="*40)
-        
+        # Resolve model paths using the provided models root. This helps when
+        # the path in `model_paths` is relative or the user placed models under
+        # a different base directory.
+        resolved_path = model_path
+        if not os.path.exists(resolved_path):
+            # try common alternatives under the provided models root
+            base_name = os.path.basename(model_path)
+            candidates = [
+                os.path.join(args.models_root, base_name),
+                os.path.join(args.models_root, base_name, "final"),
+                os.path.join(args.models_root, base_name.replace('trained_', 'results_')),
+                os.path.join(args.models_root, base_name.replace('trained_', 'results_'), "final"),
+                os.path.join(args.models_root, base_name + "_segments"),
+                os.path.join(args.models_root, base_name + "_segments", "final"),
+            ]
+
+            # also try to find any directory in models_root that contains a keyword from the model name
+            keywords = []
+            mn = model_name.lower()
+            if "bart" in mn:
+                keywords.append("bart")
+            if "primera" in mn or "primera" in base_name.lower():
+                keywords.append("primera")
+            if "ptt5" in mn or "ptt5" in base_name.lower() or "t5" in mn:
+                keywords.append("ptt5")
+            if "led" in mn or "long" in mn:
+                keywords.append("led")
+
+            try:
+                for entry in os.listdir(args.models_root):
+                    entry_l = entry.lower()
+                    if any(k in entry_l for k in keywords) and os.path.isdir(os.path.join(args.models_root, entry)):
+                        candidates.append(os.path.join(args.models_root, entry))
+                        candidates.append(os.path.join(args.models_root, entry, "final"))
+            except Exception:
+                pass
+
+            # pick the first candidate that looks like a model repository
+            found = False
+            for c in candidates:
+                if not os.path.exists(c):
+                    continue
+                # prefer a 'final' subfolder if present
+                final_sub = os.path.join(c, "final")
+                if os.path.exists(final_sub):
+                    resolved_path = final_sub
+                    found = True
+                    break
+
+                # accept directories that contain common model files
+                common_files = ["pytorch_model.bin", "tf_model.h5", "flax_model.msgpack", "adapter_model.bin", "config.json"]
+                if any(os.path.exists(os.path.join(c, cf)) for cf in common_files):
+                    resolved_path = c
+                    found = True
+                    break
+
+            if not found:
+                print(f"⚠️  Model path for '{model_name}' not found under '{args.models_root}'. Checked candidates: {candidates}. Skipping.")
+                continue
+
         # Load the model, tokenizer, and configuration
         try:
-            bundle: Dict[str, Any] = load_model(model_path)
+            bundle: Dict[str, Any] = load_model(resolved_path)
         except Exception as e:
-            print(f"❌ Critical Error loading model {model_name} from {model_path}: {e}. Skipping.")
+            print(f"❌ Critical Error loading model {model_name} from {resolved_path}: {e}. Skipping.")
             continue
             
         model: AutoModelForSeq2SeqLM = bundle["model"]
@@ -227,6 +356,7 @@ def main():
         print(f"Generation Limits: max_new_tokens={max_new}, min_new_tokens={min_new}")
 
         # Prepare the dataset: chunk the validation data according to the current model's max_length
+        # Use the validation split for generation
         val_data: List[Dict[str, Any]] = prepare_dataset(val_df, tokenizer, model_max_len=max_length)
         print(f"Data prepared into chunks for {model_name}.")
 

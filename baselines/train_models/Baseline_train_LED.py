@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import torch
 import evaluate
+import argparse
 from typing import List, Dict, Any, Union
 
 # Third-party libraries
@@ -13,9 +14,7 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     TrainingArguments,
     Trainer,
-    DataCollatorForSeq2Seq, # Used as a base reference
 )
-from torch.nn.utils.rnn import pad_sequence
 from tqdm import tqdm
 
 
@@ -23,63 +22,57 @@ from tqdm import tqdm
 # 🚀 Configuration Constants
 # ==============================================================================
 
-# Define paths for the dataset
-TRAIN_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/train"
-VAL_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/val" # 🎯 ADDED VALIDATION FOLDER
-
 # Model Checkpoint
 # LED model with max input length of 16384 tokens
 CHECKPOINT: str = "allenai/led-base-16384"
 
 # Tokenization and Model-specific parameters
-CHUNK_MAX_LENGTH: int = 1024 # Chunk size for a single training example
+CHUNK_MAX_LENGTH: int = 1024  # Chunk size for a single training example
 CHUNK_STRIDE: int = 512
 TARGET_MAX_LENGTH: int = 128
-OUTPUT_DIR: str = "./results_led_segments" # Consistent output directory name
+
+# Default output directory (overridden by CLI)
+OUTPUT_DIR: str = "./results_led_segments"
 
 
 # ==============================================================================
 # 💾 Data Loading and Preparation Functions
 # ==============================================================================
 
-def load_segments_from_folder(folder_path: str) -> pd.DataFrame:
+def load_citilink(filepath: str) -> pd.DataFrame:
     """
-    Loads text and summary segments from all JSON files in a specified folder.
-    
+    Read a consolidated citilink JSON and return a flat DataFrame.
+
+    The dataset file is expected to use the CitiLink-Summ format. In brief, it
+    contains a top-level ``municipalities`` list, each entry holding a
+    ``minutes`` list, and each minute containing an ``agenda_items`` list.
+    Only those items with both ``text`` and ``summary`` are loaded.
+
     Args:
-        folder_path: The path to the directory containing the JSON dataset files.
+        filepath: path to the single JSON dataset file.
 
     Returns:
-        A pandas DataFrame where each row represents a segment.
+        DataFrame with columns ``texto`` and ``sumario`` ready for further
+        processing (chunking/tokenization) in this script.
     """
-    all_segments: List[Dict[str, str]] = []
-    
-    if not os.path.isdir(folder_path):
-        print(f"Error: Folder not found at {folder_path}")
+    all_rows: List[Dict[str, str]] = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # pragma: no cover
+        print(f"Unable to load {filepath}: {exc}")
         return pd.DataFrame()
 
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".json"):
-            path = os.path.join(folder_path, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    doc: Dict[str, Any] = json.load(f)
-                    
-                if "segments" in doc and isinstance(doc["segments"], list):
-                    for seg in doc["segments"]:
-                        if "resumo" not in seg or not seg.get("text"):
-                            continue
-                        
-                        all_segments.append({
-                            "document_id": doc.get("document_id", "N/A"),
-                            "text": seg["text"],
-                            "resumo": seg["resumo"],
-                            "tema": seg.get("tema", "")
-                        })
-            except Exception as e:
-                print(f"Error processing file '{filename}': {e}")
+    for muni in data.get("municipalities", []):
+        for minute in muni.get("minutes", []):
+            for item in minute.get("agenda_items", []):
+                text = item.get("text")
+                summary = item.get("summary")
+                if not text or not summary:
+                    continue
+                all_rows.append({"texto": text, "sumario": summary})
 
-    return pd.DataFrame(all_segments)
+    return pd.DataFrame(all_rows)
 
 
 def chunk_text_with_global_attention(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_LENGTH, stride: int = CHUNK_STRIDE) -> tuple[List[List[int]], List[List[int]]]:
@@ -125,70 +118,51 @@ def chunk_text_with_global_attention(text: str, tokenizer: AutoTokenizer, max_le
 
 def prepare_dataset(df: pd.DataFrame, tokenizer: AutoTokenizer, desc: str) -> Dataset:
     """
-    Tokenizes the entire dataset, applies chunking and global attention logic, 
-    and handles padding/truncation to create a Hugging Face Dataset.
-    
+    Tokenizes the dataset, applying LED-specific chunking and global attention.
+
     Args:
-        df: The input DataFrame containing 'text' and 'resumo' columns.
+        df: DataFrame containing ``texto`` and ``sumario`` columns.
         tokenizer: The initialized tokenizer.
         desc: Description for the tqdm progress bar.
 
     Returns:
-        A Hugging Face Dataset object.
+        A Hugging Face Dataset object ready for training.
     """
     input_ids_list, attention_masks_list, global_attention_masks_list, labels_list = [], [], [], []
 
-    # Process all segments/rows
+    # Process all rows
     for _, row in tqdm(df.iterrows(), total=len(df), desc=desc):
-        # 1. Chunk the input text and generate global masks
         chunks_tokens, global_masks = chunk_text_with_global_attention(
-            str(row["text"]), tokenizer, CHUNK_MAX_LENGTH, CHUNK_STRIDE
+            str(row["texto"]), tokenizer, CHUNK_MAX_LENGTH, CHUNK_STRIDE
         )
-        
-        # 2. Tokenize the target summary (label)
+
         target: List[int] = tokenizer.encode(
-            str(row["resumo"]), 
-            truncation=True, 
+            str(row["sumario"]),
+            truncation=True,
             max_length=TARGET_MAX_LENGTH
         )
-        
-        # 3. Extend lists for each chunk
+
         for chunk, global_mask in zip(chunks_tokens, global_masks):
             input_ids_list.append(chunk)
             global_attention_masks_list.append(global_mask)
             attention_masks_list.append([1] * len(chunk))
-            
-            # Use the same target for all chunks of a single segment
             labels_list.append(target)
-            
-    # --- Padding and Tensor Creation ---
-    
-    # Pad to the length of the longest example in this batch
+
+    # Padding
     max_len_input: int = max(len(x) for x in input_ids_list) if input_ids_list else 0
     max_len_label: int = max(len(x) for x in labels_list) if labels_list else 0
-    
-    padded_data = {
-        "input_ids": [],
-        "attention_mask": [],
-        "global_attention_mask": [],
-        "labels": []
-    }
 
-    # Apply padding to inputs
+    padded_data = {"input_ids": [], "attention_mask": [], "global_attention_mask": [], "labels": []}
+
     for input_ids, attention_mask, global_mask in zip(input_ids_list, attention_masks_list, global_attention_masks_list):
         pad_len = max_len_input - len(input_ids)
         padded_data["input_ids"].append(input_ids + [tokenizer.pad_token_id] * pad_len)
         padded_data["attention_mask"].append(attention_mask + [0] * pad_len)
         padded_data["global_attention_mask"].append(global_mask + [0] * pad_len)
 
-    # Apply padding to labels
     for labels in labels_list:
         pad_len = max_len_label - len(labels)
-        # Pad labels with -100 so the loss function ignores them
         padded_labels = labels + [-100] * pad_len
-        
-        # Ensure label IDs are valid (not special tokens outside normal vocab range if any)
-        # Note: -100 is handled by the loss function, but we ensure other tokens are correct
         processed_labels = [t if t >= 0 else -100 for t in padded_labels]
         padded_data["labels"].append(processed_labels)
 
@@ -276,24 +250,45 @@ def compute_metrics(eval_preds: tuple) -> Dict[str, float]:
 # ==============================================================================
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Fine-tune LED on the citilink summarization dataset"
+    )
+    parser.add_argument("input", help="path to citilink JSON file")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="random seed used for splitting (60/20/20)")
+    parser.add_argument("--output-dir", default=OUTPUT_DIR,
+                        help="directory where model checkpoints/logs are written")
+    parser.add_argument("--epochs", type=int, default=3,
+                        help="number of training epochs")
+    parser.add_argument("--batch-size", type=int, default=1,
+                        help="per-device train batch size")
+    args = parser.parse_args()
+
     print(f"✨ Starting LED Summarization Model Setup with checkpoint: {CHECKPOINT}")
 
-    # --- 1. Data Loading ---
-    train_df: pd.DataFrame = load_segments_from_folder(TRAIN_FOLDER)
-    val_df: pd.DataFrame = load_segments_from_folder(VAL_FOLDER)
-    print(f"Loaded {len(train_df)} training segments and {len(val_df)} validation segments.")
+    # --- 1. Data Loading & Split ---
+    df: pd.DataFrame = load_citilink(args.input)
+    print(f"loaded {len(df)} agenda items from {args.input}")
+
+    df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
+    n_total = len(df)
+    n_train = int(0.6 * n_total)
+    n_val = int(0.2 * n_total)
+    train_df = df.iloc[:n_train]
+    val_df = df.iloc[n_train : n_train + n_val]
+    test_df = df.iloc[n_train + n_val :]
+    print(f"split into {len(train_df)} train / {len(val_df)} val / {len(test_df)} test")
 
     # --- 2. Model and Tokenizer Initialization ---
     try:
         tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(CHECKPOINT)
         model: AutoModelForSeq2SeqLM = AutoModelForSeq2SeqLM.from_pretrained(CHECKPOINT)
-        # Enable gradient checkpointing to save GPU memory, essential for large models like LED
-        model.gradient_checkpointing_enable() 
+        model.gradient_checkpointing_enable()
     except Exception as e:
         print(f"Failed to load model or tokenizer: {e}")
         exit()
 
-    # --- 3. Dataset Preparation (Chunking, Global Attention, and Tokenization) ---
+    # --- 3. Dataset Preparation ---
     print("Preparing and tokenizing training dataset...")
     train_dataset: Dataset = prepare_dataset(train_df, tokenizer, desc="Preparing train dataset")
     print("Preparing and tokenizing validation dataset...")
@@ -306,24 +301,22 @@ if __name__ == "__main__":
     use_fp16: bool = torch.cuda.is_available()
     print(f"FP16 training enabled: {use_fp16}")
 
-    # LED is a large model, so use small batch size and gradient accumulation.
     training_args = TrainingArguments(
-        output_dir=OUTPUT_DIR,
-        eval_strategy="steps",              # 🎯 Evaluate every 'eval_steps'
-        eval_steps=100,                     # Run evaluation every 100 steps
+        output_dir=args.output_dir,
+        eval_strategy="steps",
+        eval_steps=100,
         save_strategy="steps",
         save_steps=100,
-        load_best_model_at_end=True,        # Load the model with the best validation metric
-        metric_for_best_model="rougeL",     # Use ROUGE-L to determine the best model
-        
+        load_best_model_at_end=True,
+        metric_for_best_model="rougeL",
         learning_rate=2e-5,
-        per_device_train_batch_size=1,      # Extremely low batch size due to model size
-        num_train_epochs=3,
+        per_device_train_batch_size=args.batch_size,
+        num_train_epochs=args.epochs,
         weight_decay=0.01,
         save_total_limit=1,
         logging_steps=20,
         fp16=use_fp16,
-        gradient_accumulation_steps=4       # Accumulate gradients over 4 batches
+        gradient_accumulation_steps=4
     )
 
     data_collator = LEDDataCollator(tokenizer)
@@ -332,8 +325,8 @@ if __name__ == "__main__":
         model=model,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=val_dataset,           # 🎯 ADD VALIDATION DATASET
-        compute_metrics=compute_metrics,    # 🎯 ADD METRICS
+        eval_dataset=val_dataset,
+        compute_metrics=compute_metrics,
         tokenizer=tokenizer,
         data_collator=data_collator
     )
@@ -344,10 +337,9 @@ if __name__ == "__main__":
     print("--- Training Complete ---")
 
     # --- 6. Save Final Model and Tokenizer ---
-    print(f"Saving final model to: {OUTPUT_DIR}")
-    # The best model based on validation metrics is automatically loaded and saved here
-    trainer.save_model(OUTPUT_DIR)
-    tokenizer.save_pretrained(OUTPUT_DIR)
+    print(f"Saving final model to: {args.output_dir}")
+    trainer.save_model(args.output_dir)
+    tokenizer.save_pretrained(args.output_dir)
     print("Model and tokenizer saved successfully.")
 
     print("✅ Deployment script execution finished.")

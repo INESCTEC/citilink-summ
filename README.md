@@ -77,10 +77,7 @@ Citilink-Summ/
 │ ├── header.png
 │ └── structure.png
 │
-├── sample/ # Sample subset of the dataset (train/val/test)
-│ ├── train/
-│ ├── val/
-│ └── test/
+├── sample.json # sample of the CitiLink_Summ Dataset
 │
 ├── Summarization_guidelines.pdf
 ├── LICENSE

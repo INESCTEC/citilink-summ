@@ -1,5 +1,11 @@
+# baseline_train_BART.py
+# --------------------
+# This script fine‑tunes a BART model on the CitiLink-Summ dataset.
+
+
 import os
 import json
+import argparse
 import numpy as np
 import pandas as pd
 import torch
@@ -21,9 +27,9 @@ import evaluate
 # 🚀 Configuration Constants
 # ==============================================================================
 
-# Define paths for the dataset
-TRAIN_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/train"
-VAL_FOLDER: str = "/mnt/c/Users/migue/Desktop/citilink_summarization/dataset_split/val"
+# The training data is expected in a single JSON file containing citilink
+# records.  During execution the file is randomly partitioned 60/20/20 into
+# training, validation and test subsets.
 
 # Model Checkpoint
 CHECKPOINT: str = "facebook/bart-base"
@@ -38,60 +44,58 @@ TARGET_MAX_LENGTH: int = 128
 
 
 # ==============================================================================
-# 💾 Data Loading and Preparation Functions
+# Data Loading and Preparation Functions
 # ==============================================================================
 
-def load_segments_from_folder(folder_path: str) -> pd.DataFrame:
-    """
-    Loads text and summary segments from all JSON files in a specified folder.
+def load_citilink(filepath: str) -> pd.DataFrame:
+    """Read a consolidated citilink JSON and return a flat DataFrame.
 
-    The function iterates through all JSON files, extracts 'text' and 'resumo' 
-    (summary) from each segment, and compiles them into a DataFrame.
+    The dataset file is expected to use the CitiLink-Summ format. In brief, it contains a top-level
+    "municipalities" list, each entry holding a "minutes" list, and each
+    minute containing an "agenda_items" list.  Only those items with both
+    "text" and "summary" are loaded.
+
+        {
+            "municipalities": [
+                {"municipality": ..., "minutes": [
+                    {"minute_id": ..., "agenda_items": [
+                        {"text": ..., "summary": ..., ...},
+                        ...
+                    ]},
+                    ...
+                ]},
+                ...
+            ]
+        }
+
+    We simply iterate over every agenda item and collect the ``text`` and
+    ``summary`` fields.  Rows lacking either are skipped.
 
     Args:
-        folder_path: The path to the directory containing the JSON dataset files.
+        filepath: path to the single JSON dataset file.
 
     Returns:
-        A pandas DataFrame where each row represents a training/validation segment
-        with columns: 'document_id', 'text', 'resumo', and 'tema'.
+        DataFrame with columns ``texto`` and ``sumario`` ready for
+        further processing (chunking/tokenization) in this script.
     """
-    all_segments: List[Dict[str, str]] = []
-    
-    # Check if the folder exists
-    if not os.path.isdir(folder_path):
-        print(f"Error: Folder not found at {folder_path}")
+    all_rows: List[Dict[str, str]] = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # pragma: no cover - basic error handling
+        print(f"Unable to load {filepath}: {exc}")
         return pd.DataFrame()
 
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".json"):
-            path = os.path.join(folder_path, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    doc: Dict[str, Any] = json.load(f)
-                    
-                # Ensure 'segments' key exists and is iterable
-                if "segments" in doc and isinstance(doc["segments"], list):
-                    for i, seg in enumerate(doc["segments"]):
-                        # Data Validation: Ensure the required 'resumo' key is present
-                        if "resumo" not in seg or not seg.get("text"):
-                            print(f"Warning: Skipping segment {i} in '{filename}' due to missing 'resumo' or 'text'.")
-                            continue
-                        
-                        all_segments.append({
-                            "document_id": doc.get("document_id", "N/A"),
-                            "text": seg["text"],
-                            "resumo": seg["resumo"],
-                            "tema": seg.get("tema", "") # 'tema' is optional
-                        })
-                else:
-                    print(f"Warning: '{filename}' does not contain a 'segments' list.")
+    for muni in data.get("municipalities", []):
+        for minute in muni.get("minutes", []):
+            for item in minute.get("agenda_items", []):
+                text = item.get("text")
+                summary = item.get("summary")
+                if not text or not summary:
+                    continue
+                all_rows.append({"texto": text, "sumario": summary})
 
-            except json.JSONDecodeError:
-                print(f"Error: Could not decode JSON in file: {filename}")
-            except Exception as e:
-                print(f"An unexpected error occurred while processing '{filename}': {e}")
-
-    return pd.DataFrame(all_segments)
+    return pd.DataFrame(all_rows)
 
 
 def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_LENGTH, stride: int = CHUNK_STRIDE) -> List[str]:
@@ -133,32 +137,37 @@ def chunk_text(text: str, tokenizer: AutoTokenizer, max_length: int = CHUNK_MAX_
 
 def prepare_dataset(df: pd.DataFrame) -> Dataset:
     """
-    Processes the raw DataFrame by chunking long texts and combining chunks 
+    Processes the raw DataFrame by chunking long texts and combining chunks
     into a single string, preparing it for tokenization.
 
+    The incoming ``df`` should already be produced by ``load_citilink`` so it
+    contains two columns named ``texto`` and ``sumario``.  These correspond to
+    the original meeting text and its human‑written summary, respectively.
+
     Args:
-        df: The input DataFrame containing 'text' and 'resumo' columns.
+        df: The input DataFrame containing ``texto`` and ``sumario`` columns.
 
     Returns:
-        A Hugging Face Dataset object with 'texto' (concatenated chunks) and 
-        'sumario' (summary/label).
+        A Hugging Face ``Dataset`` object with the same ``texto`` and ``sumario``
+        fields, where ``texto`` has been chunked and concatenated for easier
+        tokenization.
     """
     processed_rows: List[Dict[str, str]] = []
-    
+
     # Iterate over the DataFrame rows (segments)
     for _, row in df.iterrows():
-        # 1. Chunk the input text
-        text_chunks: List[str] = chunk_text(str(row["text"]), tokenizer)
-        
+        # 1. Chunk the input text using the 'texto' column
+        text_chunks: List[str] = chunk_text(str(row["texto"]), tokenizer)
+
         # 2. Concatenate all chunks back into one input text for the model
-        # This is a common approach for handling long documents in summarization, 
-        # though it means the model only sees the concatenated text, not the 
+        # This is a common approach for handling long documents in summarization,
+        # though it means the model only sees the concatenated text, not the
         # structure of individual chunks directly in the input.
         full_input: str = " ".join(text_chunks)
-        
+
         processed_rows.append({
             "texto": full_input,
-            "sumario": str(row["resumo"])
+            "sumario": str(row["sumario"])
         })
         
     # Convert the list of dicts into a Hugging Face Dataset
@@ -209,7 +218,7 @@ def preprocess_function(examples: Dict[str, List[str]]) -> Dict[str, Union[List[
 
 
 # ==============================================================================
-# 📊 Metrics and Evaluation
+#  Metrics and Evaluation
 # ==============================================================================
 
 # Load the ROUGE metric from the Hugging Face 'evaluate' library
@@ -267,16 +276,44 @@ def compute_metrics(eval_preds: tuple) -> Dict[str, float]:
 # ==============================================================================
 
 if __name__ == "__main__":
+    # parse command-line arguments so the script can be run directly or via
+    # ``python baseline_train_BART.py /path/to/citilink.json``.  the defaults
+    # are chosen to work reasonably well for a small sample but users can
+    # override them when running on the full dataset.
+    parser = argparse.ArgumentParser(
+        description="Fine-tune BART on the citilink summarization dataset"
+    )
+    parser.add_argument("input", help="path to citilink JSON file")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="random seed used for splitting (60/20/20)")
+    parser.add_argument("--output-dir", default="./results_bart_segments",
+                        help="directory where model checkpoints/logs are written")
+    parser.add_argument("--epochs", type=int, default=3,
+                        help="number of training epochs")
+    parser.add_argument("--batch-size", type=int, default=4,
+                        help="per-device train batch size")
+    args = parser.parse_args()
+
     print("✨ Starting Summarization Model Setup and Training...")
+    print(f"training configuration: epochs={args.epochs}, batch_size={args.batch_size}, seed={args.seed}")
 
-    # --- 1. Data Loading ---
-    print(f"Loading training data from: {TRAIN_FOLDER}")
-    train_df: pd.DataFrame = load_segments_from_folder(TRAIN_FOLDER)
-    print(f"Loaded {len(train_df)} training segments.")
+    # -------------------------------------------------------------
+    # 1. Data Loading & Random Split (60/20/20)
+    # -------------------------------------------------------------
+    df: pd.DataFrame = load_citilink(args.input)
+    print(f"loaded {len(df)} agenda items from {args.input}")
 
-    print(f"Loading validation data from: {VAL_FOLDER}")
-    val_df: pd.DataFrame = load_segments_from_folder(VAL_FOLDER)
-    print(f"Loaded {len(val_df)} validation segments.")
+    # random shuffle with optional seed for reproducibility
+    df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
+    n_total = len(df)
+    n_train = int(0.6 * n_total)
+    n_val = int(0.2 * n_total)
+
+    train_df = df.iloc[:n_train]
+    val_df = df.iloc[n_train : n_train + n_val]
+    test_df = df.iloc[n_train + n_val :]
+
+    print(f"split into {len(train_df)} train / {len(val_df)} val / {len(test_df)} test")
 
     # --- 2. Model and Tokenizer Initialization ---
     print(f"Initializing Tokenizer and Model from checkpoint: {CHECKPOINT}")
@@ -291,14 +328,17 @@ if __name__ == "__main__":
     print("Preparing datasets (chunking and concatenating text)...")
     train_dataset: Dataset = prepare_dataset(train_df)
     val_dataset: Dataset = prepare_dataset(val_df)
+    test_dataset: Dataset = prepare_dataset(test_df)
     print(f"Training dataset size (after preparation): {len(train_dataset)}")
     print(f"Validation dataset size (after preparation): {len(val_dataset)}")
+    print(f"Test dataset size (after preparation): {len(test_dataset)}")
 
     # --- 4. Tokenization (Mapping) ---
     print("Tokenizing datasets...")
     # Apply the preprocessing function (tokenization and padding) to the datasets
     tokenized_train: Dataset = train_dataset.map(preprocess_function, batched=True)
     tokenized_val: Dataset = val_dataset.map(preprocess_function, batched=True)
+    tokenized_test: Dataset = test_dataset.map(preprocess_function, batched=True)
     print("Tokenization complete.")
 
     # --- 5. Training Setup ---
@@ -308,12 +348,12 @@ if __name__ == "__main__":
     use_fp16: bool = torch.cuda.is_available()
 
     training_args = TrainingArguments(
-        output_dir="./results_bart_segments", # Directory for checkpoints and logs
+        output_dir=args.output_dir,              # Directory for checkpoints and logs (from CLI)
         eval_strategy="steps",              # Evaluation is performed every 'eval_steps'
         eval_steps=100,                     # Run evaluation every 100 steps
         learning_rate=2e-5,                 # Standard learning rate for fine-tuning
-        per_device_train_batch_size=4,      # Batch size per GPU/CPU
-        num_train_epochs=3,                 # Number of training epochs
+        per_device_train_batch_size=args.batch_size,      # Batch size per GPU/CPU
+        num_train_epochs=args.epochs,                 # Number of training epochs
         weight_decay=0.01,                  # L2 regularization
         save_total_limit=1,                 # Only save the best checkpoint (based on evaluation metric)
         logging_steps=10,                   # Log training loss every 10 steps
@@ -339,7 +379,8 @@ if __name__ == "__main__":
     print("--- Training Complete ---")
 
     # --- 7. Save Final Model and Tokenizer ---
-    FINAL_SAVE_PATH: str = "./trained_bart_segments"
+    # place the final model/tokenizer inside the same output directory
+    FINAL_SAVE_PATH: str = os.path.join(args.output_dir, "final")
     print(f"Saving final model to: {FINAL_SAVE_PATH}")
     trainer.save_model(FINAL_SAVE_PATH)
     tokenizer.save_pretrained(FINAL_SAVE_PATH)

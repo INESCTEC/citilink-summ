@@ -17,8 +17,8 @@ MAX_TOKENS = 512
 # Base directory for input/output files
 BASE_PATH = "."
 # Path to the input JSON file containing pre-generated summaries from multiple models
-# ✅ CORRECTION APPLIED HERE:
-INPUT_FILE = "../generate_summaries/test_precomputed_all_models_dynamic.json"
+# Default to the generator's validation output filename.
+INPUT_FILE = "../generate_summaries/val_precomputed_all_models_dynamic.json"
 # Tokenizer checkpoint used for BERTScore and MoverScore chunking
 TOKENIZER_NAME = "bert-base-multilingual-cased"
 
@@ -100,16 +100,32 @@ def compute_all_metrics(preds: List[str], refs: List[str], tokenizer: Optional[A
 
 # --------------------- Main Execution ---------------------
 def main():
+    # If the configured input file is missing, try to auto-discover a precomputed file
     if not os.path.exists(INPUT_FILE):
-        print(f"❌ ERRO CRÍTICO: O ficheiro de entrada não foi encontrado no caminho especificado: {INPUT_FILE}")
-        print("Certifique-se de que está a executar o script a partir do diretório correto.")
-        return
+        gen_dir = os.path.dirname(INPUT_FILE) or "../generate_summaries"
+        candidates = []
+        try:
+            for fn in os.listdir(gen_dir):
+                if fn.lower().endswith('.json') and 'precomputed' in fn.lower():
+                    candidates.append(os.path.join(gen_dir, fn))
+        except Exception:
+            candidates = []
+
+        if candidates:
+            input_path = candidates[0]
+            print(f"⚠️  Input file {INPUT_FILE} not found; using discovered file: {input_path}")
+        else:
+            print(f"❌ ERRO CRÍTICO: O ficheiro de entrada não foi encontrado no caminho especificado: {INPUT_FILE}")
+            print("Certifique-se de que está a executar o script a partir do diretório correto.")
+            return
+    else:
+        input_path = INPUT_FILE
 
     # Load the precomputed summaries file
-    with open(INPUT_FILE, "r", encoding="utf-8") as f:
+    with open(input_path, "r", encoding="utf-8") as f:
         results: List[Dict[str, Any]] = json.load(f)
 
-    print(f"Loaded {len(results)} test segments from {INPUT_FILE}")
+    print(f"Loaded {len(results)} test segments from {input_path}")
     tokenizer: AutoTokenizer = AutoTokenizer.from_pretrained(TOKENIZER_NAME)
 
     segment_metrics: List[Dict[str, Any]] = []
