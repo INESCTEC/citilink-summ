@@ -89,29 +89,112 @@ Citilink-Summ/
 
 ---
 
-## ⚙️ Installation and Usage
+## Installation and Usage
 
-### 1. Clone the repository
+### Requirements
+Install dependencies from the provided `requirements.txt`:
+
 ```bash
-git clone https://github.com/inesctec/citilink-summ.git
-cd citilink-summ
+pip install -r requirements.txt
 ```
 
-### 2. Create and activate a virtual environment
+Core packages included (see `requirements.txt`): `torch`, `transformers`, `datasets`, `evaluate`, `sacrebleu`, `bert-score`, `moverscore`, `tqdm`, `scikit-learn`, `pandas`.
+
+If you plan to use a GPU, install a CUDA-compatible `torch` wheel for your system.
+
+### Model folder layout
+The generator expects a Hugging Face-style local repo (e.g., `config.json` and model weights such as `pytorch_model.bin`), or a folder that the script can load via `AutoModelForSeq2SeqLM.from_pretrained()`.
+
+Examples:
+- `baselines/train_models/results_led_segments/final/` — LED model artifacts
+- `baselines/train_models/results_bart_segments/final/` — BART model artifacts
+
+If a model folder is empty or missing expected files, the generator will skip it and print a warning.
+
+### Training (examples)
+Run training scripts from the repository root or their containing folder. All training scripts accept output directory arguments where a `final/` folder will be created.
+
+Example — BART training (script name may vary):
+
 ```bash
-python -m venv venv
-source venv/bin/activate   # Linux/macOS
-venv\Scripts\activate      # Windows
+# from repository root
+python3 baselines/train_models/baseline_train_BART.py ../../sample.json
 ```
 
-### 3. Install dependencies
+Example — PRIMERA training:
+
 ```bash
-pip install -r baselines/requirements.txt
+python3 baselines/train_models/baseline_train_PRIMERA.py ../../sample.json
 ```
 
-### 4. Run a baseline model
+Example — PTT5 training:
 
----
+```bash
+python3 baselines/train_models/baseline_train_PTT5.py ../../sample.json
+```
+
+Example — LED training:
+
+```bash
+python3 baselines/train_models/baseline_train_LED.py ../../sample.json
+```
+
+Notes:
+- The training scripts in this repo use a deterministic 60/20/20 train/val/test split by default (or accept `--split` flags).
+- After training, ensure the model artifacts are available on the train folder.
+
+### Generation (produce summaries)
+Run the generator from `baselines/generate_summaries`.
+
+Full run (resolve models under `--models-root`):
+
+```bash
+cd baselines/generate_summaries
+python3 Baseline_Gen_Encoder-Decoder-Models.py ../../sample.json --models-root ../train_models
+```
+
+Notes:
+- Output file: `baselines/generate_summaries/val_precomputed_all_models_dynamic.json` (contains model outputs and metadata).
+- `--models-root` should point to the parent folder that contains your trained model folders (default in the script is `../train_models`).
+
+### Evaluation (compute metrics)
+Run the evaluator from `baselines/evaluation`.
+
+```bash
+cd baselines/evaluation
+python3 Baseline_Eval_Encoder-Decoder-Models.py
+```
+
+Notes:
+- The evaluator looks by default for `../generate_summaries/val_precomputed_all_models_dynamic.json`. If missing, it will try to auto-discover any `*precomputed*.json` file in that folder.
+- Outputs written to `baselines/evaluation`:
+  - `test_segment_metrics.jsonl` — per-segment/per-model metrics
+  - `test_global_metrics.json` — averaged metrics per model
+  - `test_global_metrics_by_camara.json` — metrics grouped by municipality
+
+### Troubleshooting
+- If the generator prints a warning about missing model files, check that `config.json` and model weight files exist inside `baselines/train_models/<model_folder>/.../`.
+- For long models (e.g., BART-large), generation can take a long time or require more memory. Run such models individually if you want to conserve time.
+
+### Quick summary commands
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Generate (all models under `train_models`):
+```bash
+cd baselines/generate_summaries
+python3 Baseline_Gen_Encoder-Decoder-Models.py ../../sample.json --models-root ../train_models
+```
+
+Evaluate:
+```bash
+cd baselines/evaluation
+python3 Baseline_Eval_Encoder-Decoder-Models.py
+```
+
 
 ## 📘 Dataset
 
