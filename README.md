@@ -211,8 +211,9 @@ This project is licensed under the **Creative Commons BY-NC-SA 4.0 License** —
 ## 📚 Documentation and Resources
 
 - **CitiLink Project:** [https://citilink.inesctec.pt/](https://citilink.inesctec.pt/)  
-- **CitiLink-Summ Paper (preprint):** *Coming soon*  
+- **CitiLink-Summ Paper (preprint):** [https://arxiv.org/abs/2602.16607](https://arxiv.org/abs/2602.16607)
 - **CitiLink Dataset:** [https://github.com/INESCTEC/citilink-dataset](https://github.com/INESCTEC/citilink-dataset)
+- **CitiLink-Summ Paper**: *Coming soon*
 - **CitiLink-Summ Dataset**: *Coming soon*
 ---
 
