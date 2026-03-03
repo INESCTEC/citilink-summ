@@ -33,7 +33,7 @@ The benchmark includes manually curated abstractive summaries that condense the 
 ## 📊 Project Status
 
 The benchmark and the full set of baselines are implemented and reproducible.  
-The *complete dataset* will be released soon.
+The *complete dataset* can be accessed through: https://rdm.inesctec.pt/dataset/2026-003.
 
 ---
 
@@ -214,7 +214,7 @@ This project is licensed under the **Creative Commons BY-NC-SA 4.0 License** —
 - **CitiLink-Summ Paper (preprint):** [https://arxiv.org/abs/2602.16607](https://arxiv.org/abs/2602.16607)
 - **CitiLink Dataset:** [https://github.com/INESCTEC/citilink-dataset](https://github.com/INESCTEC/citilink-dataset)
 - **CitiLink-Summ Paper**: *Coming soon*
-- **CitiLink-Summ Dataset**: *Coming soon*
+- **CitiLink-Summ Dataset**: [https://rdm.inesctec.pt/dataset/2026-003](https://rdm.inesctec.pt/dataset/2026-003)
 ---
 
 ## 👥 Credits and Acknowledgements
