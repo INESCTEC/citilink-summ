@@ -213,7 +213,7 @@ This project is licensed under the **Creative Commons BY-NC-SA 4.0 License** —
 - **CitiLink Project:** [https://citilink.inesctec.pt/](https://citilink.inesctec.pt/)  
 - **CitiLink-Summ Paper (preprint):** [https://arxiv.org/abs/2602.16607](https://arxiv.org/abs/2602.16607)
 - **CitiLink Dataset:** [https://github.com/INESCTEC/citilink-dataset](https://github.com/INESCTEC/citilink-dataset)
-- **CitiLink-Summ Paper**: *Coming soon*
+- **CitiLink-Summ Paper**: [https://dl.acm.org/doi/10.1145/3774904.3792945](https://dl.acm.org/doi/10.1145/3774904.3792945)
 - **CitiLink-Summ Dataset**: [https://rdm.inesctec.pt/dataset/2026-003](https://rdm.inesctec.pt/dataset/2026-003)
 ---
 
